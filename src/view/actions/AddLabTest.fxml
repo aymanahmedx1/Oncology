@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="719.0" prefWidth="1024.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.actions.AddLabTestController">
+    <stylesheets>
+        <URL value="@addlabtest.css" />
+    </stylesheets>
+   <children>
+      <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="95.0" prefWidth="1024.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#closeWindow" prefHeight="31.0" prefWidth="97.0" styleClass="buttons" text="Back">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="84.0" text="Name">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameTxt" editable="false" minHeight="45.0" prefHeight="45.0" prefWidth="165.0" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="39.0" text="ID">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="idTxt" editable="false" minHeight="45.0" prefHeight="45.0" prefWidth="88.0" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="96.0" text="Diagnosis">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="diaTxt" editable="false" prefHeight="45.0" prefWidth="157.0" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="72.0" text="Notes">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="noteTxt" minHeight="45.0" prefHeight="45.0" prefWidth="196.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </HBox>
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="catTable" onMouseClicked="#categoryChange" prefHeight="379.0" prefWidth="226.0">
+                    <columns>
+                      <TableColumn fx:id="colCatName" prefWidth="224.0">
+                           <graphic>
+                              <TextField fx:id="txtCategoryFilter" prefHeight="37.0" prefWidth="212.0" promptText="Category Filter" />
+                           </graphic>
+                        </TableColumn>
+                    </columns>
+                  </TableView>
+                  <FlowPane fx:id="mainFlowPane" alignment="TOP_CENTER" hgap="3.0" prefHeight="200.0" prefWidth="200.0" vgap="3.0" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding></FlowPane>
+                  <VBox prefHeight="563.0" prefWidth="267.0">
+                     <children>
+                        <TableView fx:id="table" onMouseClicked="#reomoveItem" prefHeight="200.0" prefWidth="200.0" styleClass="testsTable" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="tName" editable="false" prefWidth="266.0" resizable="false" sortable="false" text="Choosed Tests" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="71.0" prefWidth="812.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#sendToLab" onKeyPressed="#saveByEnter" prefHeight="62.0" prefWidth="292.0" styleClass="finished" text="Send To Lab">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

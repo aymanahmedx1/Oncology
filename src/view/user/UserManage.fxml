@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="844.0" prefWidth="931.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+    <stylesheets>
+        <URL value="@usermanage.css" />
+    </stylesheets>
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="229.0" prefWidth="761.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="384.0" prefWidth="526.0" styleClass="mainColor" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="389.0" prefWidth="353.0" spacing="40.0">
+                           <children>
+                              <JFXComboBox focusColor="RED" labelFloat="true" prefHeight="50.0" prefWidth="348.0" promptText="Department" unFocusColor="#0007ff" />
+                              <JFXTextField focusColor="RED" labelFloat="true" prefHeight="50.0" promptText="User Name" unFocusColor="#4000ff">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </JFXTextField>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="389.0" prefWidth="353.0" spacing="40.0">
+                           <children>
+                              <JFXTextField focusColor="RED" labelFloat="true" prefHeight="50.0" promptText="Password" unFocusColor="#4000ff">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField focusColor="RED" labelFloat="true" prefHeight="50.0" promptText="Confirm Password " unFocusColor="#4000ff">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </JFXTextField>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="198.0" text="All Permissions" textFill="#3700ff" underline="true">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <ListView prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="453.0" prefWidth="124.0" spacing="20.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" prefWidth="100.0" ripplerFill="RED" style="-fx-border-color: red;" text="Add" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" prefWidth="100.0" ripplerFill="RED" style="-fx-border-color: red;" text="Remove" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="198.0" text="User Permission" textFill="#3700ff" underline="true">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <ListView prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="82.0" prefWidth="984.0" spacing="50.0" styleClass="mainColor">
+               <children>
+                  <Button fx:id="clearBtn" mnemonicParsing="false" onAction="#clear" prefHeight="55.0" prefWidth="147.0" styleClass="buttons" text="Clear">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#save" prefHeight="48.0" prefWidth="168.0" styleClass="finished" text="Save">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

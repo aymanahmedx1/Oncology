@@ -1,0 +1,77 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.finished{
+    -fx-background-color:green ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.buttons{
+    -fx-background-color:blue ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.radio{
+    -fx-font: 15px sans-serif;
+    -fx-font-weight: bold;
+    -fx-pref-width:150px;
+    -fx-pref-height: 50px;
+}
+
+
+.table-view .column-header .label{
+    -fx-background-color: #cccccc;
+    -fx-pref-width:100%;
+    -fx-pref-height: 100%;
+    -fx-font: 20px arial ;
+    -fx-font-weight: bold;
+
+}
+.table-view .table-cell{
+    /*    -fx-border-color: transparent;
+        -fx-padding: 2 5 2 10px;*/
+    -fx-font: 25px arial ;
+    -fx-text-alignment: justify;
+    -fx-alignment: CENTER;
+    /*-fx-text-fill: #ffffff;*/
+}
+
+
+
+
+/*      TABLE ROW */
+/*.table-row-cell:hover {
+    -fx-background-color: #1dbbdd11;
+    -fx-text-background-color: red;
+}*/
+/*.table-row-cell:odd{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell:even{
+    -fx-background-color:  #26056c;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em ;
+}*/
+/*.table-view .scroll-bar * {
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}*/
+.testsTable{
+    -fx-border-style: solid;
+    -fx-border-image-insets: 20;
+    -fx-border-width: 3px;
+    -fx-border-color: tomato;
+}

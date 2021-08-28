@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.doctor.LabScreenController">
+   <stylesheets>
+        <URL value="@LabScreen.css" />
+    </stylesheets>
+   <children>
+      <HBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="188.0" text="Result" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="resultTable" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colNoResult" prefWidth="50.0" text="No" />
+                      <TableColumn fx:id="colNameResult" prefWidth="300.0" text="PatientName" />
+                      <TableColumn fx:id="colIDResult" prefWidth="160.0" text="ID" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="188.0" text="Sample" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="sampleTable" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="colNoSample" prefWidth="50.0" text="No" />
+                        <TableColumn fx:id="colNameSample" prefWidth="300.0" text="PatientName" />
+                        <TableColumn fx:id="colIDSample" prefWidth="160.0" text="ID" />
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

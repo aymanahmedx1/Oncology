@@ -1,0 +1,27 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.search{
+    -fx-background-color:blue ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.print{
+    -fx-background-color:green ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.table-row-cell{
+    -fx-font: 20px arial ;
+    -fx-text-alignment: justify;
+    -fx-alignment: CENTER;
+}
+#my-table .table-column {
+  -fx-alignment: CENTER;
+}

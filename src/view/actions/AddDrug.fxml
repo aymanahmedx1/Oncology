@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" onKeyReleased="#handelKeyShortcut" prefHeight="722.0" prefWidth="1024.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.actions.AddDrugController">
+    <stylesheets>
+        <URL value="@drug.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="1105.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#closeWindow" prefHeight="31.0" prefWidth="97.0" styleClass="buttons" text="Back">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" layoutX="1.0" layoutY="1.0" prefHeight="75.0" prefWidth="1014.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="173.0" text="Patient Name">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameTxt" editable="false" prefHeight="45.0" prefWidth="224.0" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="132.0" text="Patient ID" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="idTxt" editable="false" prefHeight="45.0" prefWidth="120.0" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="132.0" text="Diagnosis">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <TextField fx:id="diaTxtFilter" prefHeight="33.0" prefWidth="238.0" promptText="Diagnosis Filter" HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="comboDia" onAction="#handeldiagnosisChange" prefHeight="49.0" prefWidth="238.0" />
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="-10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="1014.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="173.0" text="Surface area ">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtSurface" editable="false" prefHeight="45.0" prefWidth="224.0" />
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="132.0" text="Weight " GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtWeight" editable="false" prefHeight="45.0" prefWidth="120.0" />
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Age ">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtAge" editable="false" prefHeight="45.0" prefWidth="79.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="1014.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="83.0" text="Drug">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="drugTxt" prefHeight="45.0" prefWidth="207.0" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="425.0" layoutY="14.0" prefHeight="27.0" prefWidth="97.0" text="Dose" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="doseTxt" prefHeight="45.0" prefWidth="80.0" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="566.0" layoutY="14.0" prefHeight="27.0" prefWidth="97.0" text="Fluid" GridPane.columnIndex="4">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="fluidCombo" onAction="#comboChange" prefHeight="45.0" prefWidth="242.0" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="892.0" layoutY="14.0" prefHeight="27.0" prefWidth="97.0" text="Volume" GridPane.columnIndex="6">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="volumeTxt" prefHeight="45.0" prefWidth="88.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="1014.0" spacing="20.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="97.0" text="Notes">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="noteTxt" prefHeight="45.0" prefWidth="752.0" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font></TextField>
+                  <Button mnemonicParsing="false" onAction="#addDrugToTable" onKeyPressed="#addByEnter" prefHeight="37.0" prefWidth="136.0" styleClass="finished" text="Add F9">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#clearFileds" onKeyPressed="#addByEnter" prefHeight="38.0" prefWidth="116.0" styleClass="clear" text="Clear">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="364.0" prefWidth="1105.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="table" prefHeight="408.0" prefWidth="1084.0" styleClass="table" HBox.hgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="tNumber" prefWidth="39.0" text="NO" />
+                        <TableColumn fx:id="tDrug" prefWidth="212.0" text="Drug" />
+                        <TableColumn fx:id="tDose" prefWidth="76.0" text="Dose" />
+                        <TableColumn fx:id="tFluid" prefWidth="117.0" resizable="false" text="Fluid" />
+                        <TableColumn fx:id="tVolume" prefWidth="82.0" text="Volume" />
+                        <TableColumn fx:id="tNote" prefWidth="480.0" text="Note" />
+                     </columns>
+                  </TableView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="96.0" prefWidth="1014.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="68.0" prefWidth="204.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#editTableItem" prefHeight="42.0" prefWidth="74.0" styleClass="buttons" text="Edit">
+                           <font>
+                              <Font name="System Bold" size="9.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#deleteTableItem" prefHeight="42.0" prefWidth="86.0" styleClass="buttons" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="9.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="68.0" prefWidth="514.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Button layoutX="164.0" layoutY="6.0" mnemonicParsing="false" onAction="#savePrescription" prefHeight="62.0" prefWidth="292.0" styleClass="finished" text="Save  F11">
+                                 <font>
+                                    <Font name="System Bold" size="9.0" />
+                                 </font>
+                              </Button>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="570.0" prefHeight="34.0" prefWidth="165.0" text="Last Visit Date" textFill="RED">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="comboLastVisit" onAction="#visitSelectionChange" prefHeight="37.0" prefWidth="226.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#clearTableItems" prefHeight="42.0" prefWidth="112.0" styleClass="clear" text="Clear All">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

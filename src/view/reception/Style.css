@@ -1,0 +1,101 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.inputText{
+    -fx-font: 19px sans-serif ;
+    -fx-font-wight: bold;
+}
+
+
+
+.combo{
+    -fx-font: 19px sans-serif ;
+    -fx-font-wight: bold;
+
+}
+/*
+.table{
+    -fx-font: 19px sans-serif ;
+    
+}
+.tableColumn{
+    -fx-text-fill:lightgreen ;
+
+    color: darkslategraydarkmagenta
+}*/
+
+
+.main{
+    -fx-background-image: url("/images/33.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+.buttons{
+    -fx-background-color:blue ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+
+}  
+.sendButton{
+    -fx-background-color:green ;
+}
+.clearBtn{
+    -fx-background-color:tomato ;
+}
+.logIn{
+
+    -fx-background-color:green ;
+    -fx-font: 35px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+
+.button:hover{
+    -fx-background-color: blueviolet;
+    -fx-text-fill: white;
+}
+
+
+.logInPane{
+
+}
+
+.avatarLogo{
+    -fx-background-image: url("/images/34.png");
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    /*-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);*/
+}
+
+.logInText{
+    -fx-border-radius: 100;
+    -fx-background-radius: 100;
+}
+
+.accordion{
+
+    -fx-font: 24px sans-serif ;
+
+}
+.logInText{
+    -fx-font: 24px sans-serif ;
+    -fx-text-fill: blue;
+
+}
+.menu{
+    -fx-font: 19px sans-serif;
+    -fx-font-weight: bold;
+    -fx-background-color: #ffffff;
+  
+}
+.statuesBar{
+    -fx-background-color: #999999;
+}

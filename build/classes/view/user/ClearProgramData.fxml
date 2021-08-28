@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="733.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.user.ClearProgramDataController">
+    <stylesheets>
+        <URL value="@clearprogramdata.css" />
+    </stylesheets>
+   <children>
+      <Label alignment="CENTER" layoutX="27.0" layoutY="29.0" prefHeight="79.0" prefWidth="680.0" text="Warning : YOU WILL LOSE DATA FOR EVER " textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <HBox layoutY="130.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
+         <children>
+            <VBox alignment="TOP_CENTER" layoutX="443.0" layoutY="162.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="130.0" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <Label alignment="CENTER" prefHeight="52.0" prefWidth="356.0" text="Company" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <JFXButton onAction="#delDrug" prefHeight="57.0" prefWidth="191.0" text="Delete Drug Data" />
+                  <JFXButton onAction="#delLabTest" prefHeight="57.0" prefWidth="191.0" text="Delete lab Test" />
+                  <JFXButton onAction="#delRegion" prefHeight="57.0" prefWidth="191.0" text="Delete region" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="619.0" layoutY="123.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <Label alignment="CENTER" prefHeight="52.0" prefWidth="356.0" text="Patient " textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <JFXButton onAction="#delPres" prefHeight="57.0" prefWidth="191.0" text="Delete Prescriptions" />
+                  <JFXButton onAction="#delLab" prefHeight="57.0" prefWidth="191.0" text="Delete Lab Orders" />
+                  <JFXButton onAction="#delMove" prefHeight="57.0" prefWidth="191.0" text="Delete visit data" />
+                  <JFXButton onAction="#delPat" prefHeight="57.0" prefWidth="191.0" text="Delete patient data" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <JFXButton layoutX="268.0" layoutY="643.0" onAction="#delAll" prefHeight="43.0" prefWidth="215.0" text="Delete All Program Data" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" />
+   </children>
+</AnchorPane>

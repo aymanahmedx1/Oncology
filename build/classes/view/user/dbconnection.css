@@ -1,0 +1,26 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.exit{
+    -fx-background-color:tomato ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.save {
+
+    -fx-background-color:green ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.testConn{
+    -fx-background-color:#faab00 ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}

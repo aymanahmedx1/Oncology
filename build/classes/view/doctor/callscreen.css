@@ -1,0 +1,13 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.table-view .table-cell{
+    -fx-font: 12px arial ;
+    -fx-alignment: CENTER;
+    -fx-font-weight: bold;
+    -fx-pref-height: 100%;
+}

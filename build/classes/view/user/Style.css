@@ -1,0 +1,110 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color: #cccccc;
+}
+.inputText{
+
+}
+
+
+
+.combo{
+    -fx-font: 19px sans-serif ;
+    -fx-font-wight: bold;
+
+}
+/*
+.table{
+    -fx-font: 19px sans-serif ;
+    
+}
+.tableColumn{
+    -fx-text-fill:lightgreen ;
+
+    color: darkslategraydarkmagenta
+}*/
+
+
+.main{
+    -fx-background-color: whitesmoke
+}
+
+.buttons{
+    -fx-background-color:blue ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+
+}  
+.sendButton{
+    -fx-background-color:green ;
+}
+.clearBtn{
+    -fx-background-color:tomato ;
+}
+.logIn{
+
+    -fx-background-color:green ;
+    -fx-font: 35px sans-serif;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+.button:hover{
+    -fx-background-color: blueviolet;
+    -fx-text-fill: white;
+}
+
+
+.logInPane{
+
+}
+
+.avatarLogo{
+    -fx-background-image: url("/images/34.png");
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    /*-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);*/
+}
+
+.logInText{
+    -fx-border-radius: 100;
+    -fx-background-radius: 100;
+}
+
+.accordion{
+
+    -fx-font: 24px sans-serif ;
+
+}
+.logInText{
+    -fx-font: 24px sans-serif ;
+    -fx-text-fill: blue;
+
+}
+.catButtons{
+    -fx-background-color: transparent ;
+        -fx-text-fill: #000000;
+
+}
+.catButtons:hover{
+    -fx-text-fill: red;
+    -fx-background-color: transparent ;
+    -fx-border-style: solid ; 
+    -fx-border-width: 3px; 
+    -fx-border-color: #faab00 ;
+    -fx-border-radius: 30;
+}
+.logo_lbl{
+    -fx-text-fill: #000000;
+    -fx-font: 41px sans-serif ;
+    -fx-font-wight: bold;
+    -fx-border-style: solid ; 
+    -fx-border-width: 3px; 
+    -fx-border-color: #faab00 ;
+    -fx-border-radius: 30;
+}

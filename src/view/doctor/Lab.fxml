@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.doctor.LabController">
+    <stylesheets>
+        <URL value="@lab.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1141.0" styleClass="mai">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="1024.0" spacing="20.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#refresh" prefHeight="47.0" prefWidth="126.0" ripplerFill="RED" styleClass="buttons" text="Refresh" />
+                  <JFXButton buttonType="RAISED" onAction="#patFinish" prefHeight="47.0" prefWidth="180.0" ripplerFill="RED" styleClass="finished" text="Finished Patient" />
+                  <Label prefHeight="35.0" prefWidth="83.0" text="Today" textFill="#2f00ff">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="todayDateLbl" prefHeight="35.0" prefWidth="216.0" textFill="#2f00ff">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label prefHeight="35.0" prefWidth="149.0" text="Current Patient" textFill="#2f00ff">
+                                 <font>
+                                    <Font name="System Bold" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currentPatCount" alignment="CENTER" prefHeight="35.0" prefWidth="57.0" text="0" textFill="#2f00ff">
+                                 <font>
+                                    <Font name="System Bold" size="19.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label prefHeight="35.0" prefWidth="68.0" text="Finish" textFill="#2f00ff">
+                                 <font>
+                                    <Font name="System Bold" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="finishPatCount" alignment="CENTER" prefHeight="35.0" prefWidth="38.0" text="0" textFill="#2f00ff">
+                                 <font>
+                                    <Font name="System Bold" size="19.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <VBox prefHeight="342.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="table" prefHeight="337.0" prefWidth="888.0" styleClass="head" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="colNo" prefWidth="75.0" text="NO" />
+                        <TableColumn fx:id="nameCol" prefWidth="300.0" resizable="false">
+                           <graphic>
+                              <TextField fx:id="filter" alignment="CENTER" prefHeight="38.0" prefWidth="254.0" promptText="Name Filter" />
+                           </graphic></TableColumn>
+                        <TableColumn fx:id="idCol" prefWidth="160.0" resizable="false" text="ID" />
+                        <TableColumn fx:id="doctorCol" prefWidth="150.0" resizable="false" styleClass="fileCol">
+                           <graphic>
+                              <TextField fx:id="txtDoctorFilter" promptText="Doctor Filter" />
+                           </graphic></TableColumn>
+                        <TableColumn fx:id="addResultCol" prefWidth="150.0" resizable="false" text="Add Result" />
+                        <TableColumn fx:id="callCol" prefWidth="150.0" resizable="false" styleClass="sampel" text="Sample Call" />
+                        <TableColumn fx:id="resultCall" prefWidth="150.0" resizable="false" styleClass="result" text="Result Call" />
+                     </columns>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="5.0" right="5.0" top="20.0" />
+               </padding>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="1141.0" styleClass="statuesBar">
+               <children>
+                  <Label fx:id="messageLabel1" prefHeight="27.0" prefWidth="1097.0" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

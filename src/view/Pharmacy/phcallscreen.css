@@ -1,0 +1,23 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color: red;
+}
+.table-view .table-cell{
+    -fx-text-alignment: justify;
+    -fx-alignment: CENTER;
+}
+.table-row-cell{
+    -fx-border-color: white;
+    -fx-table-cell-border-color:white ;
+
+}
+.table-view .table-cell{
+    /*-fx-text-fill: white;*/
+    -fx-font-weight: bold;
+}
+.test{
+    -fx-background-color: #ccffcc
+}

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="653.0" prefWidth="1041.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.doctor.DoctorController">
+    <stylesheets>
+        <URL value="@doctor.css" />
+    </stylesheets>
+   <children>
+      <VBox prefHeight="768.0" prefWidth="1141.0" spacing="10.0" styleClass="mai" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="1024.0" spacing="15.0">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#refreshUi" prefHeight="47.0" prefWidth="105.0" ripplerFill="RED" styleClass="buttons" text="Refresh" />
+                  <JFXButton buttonType="RAISED" onAction="#finishedPat" prefHeight="47.0" prefWidth="180.0" ripplerFill="RED" styleClass="finished" text="Finished Patient" />
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="65.0" text="Doctor" textFill="#2f00ff">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="doctorNameTxt" alignment="CENTER" editable="false" prefHeight="47.0" prefWidth="144.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="90.0" text="Current " textFill="#2f00ff">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="currentPatientLbl" alignment="CENTER" prefHeight="35.0" prefWidth="57.0" text="0" textFill="#2f00ff">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="68.0" text="Finish" textFill="#2f00ff">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="finishedPatientLbl" alignment="CENTER" prefHeight="35.0" prefWidth="38.0" text="0" textFill="#2f00ff">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="84.0" prefHeight="31.0" prefWidth="1041.0" spacing="30.0" styleClass="head">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="59.0" text="From" textFill="#2f00ff">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="fromDate" prefHeight="31.0" prefWidth="174.0" />
+                  <Label prefHeight="35.0" prefWidth="44.0" text="To" textFill="#2f00ff">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="toate" prefHeight="31.0" prefWidth="173.0" />
+                  <JFXButton fx:id="search" buttonType="RAISED" onAction="#searchBtn" prefHeight="47.0" prefWidth="127.0" ripplerFill="RED" styleClass="finished" text="Search" />
+                  <JFXButton fx:id="search1" buttonType="RAISED" onAction="#toDay" prefHeight="47.0" prefWidth="127.0" ripplerFill="RED" styleClass="buttons" text="ToDay" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1041.0" spacing="30.0" styleClass="head">
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <JFXButton onAction="#openFile" prefHeight="48.0" prefWidth="131.0" text="File">
+                     <styleClass>
+                        <String fx:value="allTagBtn" />
+                        <String fx:value="file" />
+                     </styleClass>
+                  </JFXButton>
+                  <JFXButton onAction="#openDrug" prefHeight="48.0" prefWidth="131.0" text="Drug">
+                     <styleClass>
+                        <String fx:value="allTagBtn" />
+                        <String fx:value="drug" />
+                     </styleClass>
+                  </JFXButton>
+                  <JFXButton onAction="#openLab" prefHeight="48.0" prefWidth="131.0" text="Lab">
+                     <styleClass>
+                        <String fx:value="allTagBtn" />
+                        <String fx:value="lab" />
+                     </styleClass>
+                  </JFXButton>
+                  <JFXButton onAction="#dischargePat" prefHeight="48.0" prefWidth="131.0" text="Discharge">
+                     <styleClass>
+                        <String fx:value="allTagBtn" />
+                        <String fx:value="discharge" />
+                     </styleClass>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCall" onAction="#callPat" prefHeight="48.0" prefWidth="131.0" text="Call">
+                     <styleClass>
+                        <String fx:value="allTagBtn" />
+                        <String fx:value="call" />
+                     </styleClass>
+                  </JFXButton>
+                  <Label fx:id="currentNameLbl" prefHeight="35.0" prefWidth="207.0" textFill="#2f00ff">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox prefHeight="342.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="table" onMouseClicked="#openLabDetails" prefHeight="484.0" prefWidth="832.0" styleClass="head" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="noCol" maxWidth="1.7976931348623157E308" prefWidth="79.0" sortable="false" styleClass="finishCol" text="NO" />
+                      <TableColumn fx:id="serviceTypeCOL" maxWidth="1.7976931348623157E308" prefWidth="285.0" sortable="false" text="service type" />
+                      <TableColumn fx:id="nameCOL" maxWidth="1.7976931348623157E308" prefWidth="472.0" sortable="false">
+                           <graphic>
+                              <TextField fx:id="txtNameFilter" alignment="CENTER" promptText="Name (Filter)" />
+                           </graphic></TableColumn>
+                        <TableColumn fx:id="idCOL" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="191.0" sortable="false" text="ID" />
+                    </columns>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="5.0" right="5.0" top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

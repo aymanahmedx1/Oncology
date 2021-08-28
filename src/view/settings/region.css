@@ -1,0 +1,27 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.saveBtn{
+    -fx-font: 16px arial ;
+    -fx-text-fill: white ; 
+    -fx-background-color: green ; 
+
+}
+.clr{
+    -fx-font: 16px arial ;
+    -fx-text-fill: white ; 
+    -fx-background-color: blue ; 
+
+}
+.label{
+    -fx-font: 16px arial ;
+
+}
+.table-view .table-cell{
+    -fx-alignment: CENTER;
+}

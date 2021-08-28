@@ -1,0 +1,53 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.buttons{
+    -fx-background-color:blue ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.finished{
+    -fx-background-color:green ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.patFile{
+    -fx-background-color:#faab00 ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.editBtn{
+    -fx-background-color:Red ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.deleteBtn{
+    -fx-background-color:tomato ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.lbl{
+    -fx-font: 19px sans-serif;
+
+}
+.txtfree{
+    -fx-text-alignment: center;
+    -fx-alignment: CENTER;
+}
+.tab-pane
+{
+    -fx-tab-min-width: 150.0px;
+}.table-view .table-cell{
+    -fx-alignment: CENTER;
+    /*-fx-font: 19px sans-serif;*/
+    -fx-font-weight: bold;
+}

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" onKeyReleased="#handelKeyShortcut" prefHeight="810.0" prefWidth="1105.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.reception.ReceptionController">
+    <stylesheets>
+        <URL value="@Style.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="14.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="1095.0" spacing="20.0">
+               <children>
+                  <JFXButton fx:id="saveBtn" buttonType="RAISED" onAction="#savePat" prefHeight="45.0" prefWidth="110.0" ripplerFill="#f20606" styleClass="buttons" text="Save F8" />
+                  <JFXButton fx:id="editBtn" buttonType="RAISED" onAction="#editPat" prefHeight="45.0" prefWidth="110.0" ripplerFill="#f20606" styleClass="buttons" text="Edit" />
+                  <JFXButton fx:id="clearBtn" buttonType="RAISED" onAction="#clear" prefHeight="45.0" prefWidth="143.0" ripplerFill="#f20606" text="Clear F10">
+                     <styleClass>
+                        <String fx:value="buttons" />
+                        <String fx:value="clearBtn" />
+                     </styleClass>
+                  </JFXButton>
+                  <JFXButton fx:id="clearBtn1" buttonType="RAISED" layoutX="270.0" layoutY="12.0" onAction="#printInfo" prefHeight="45.0" prefWidth="143.0" ripplerFill="#f20606" styleClass="sendButton" text="Print" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="528.0" prefWidth="1105.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="CENTER_RIGHT" prefHeight="502.0" prefWidth="1012.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="402.0" spacing="5.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Patient Barcode">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="barcodeTxt" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                              <JFXButton fx:id="printBtn" buttonType="RAISED" onAction="#printBarcode" prefHeight="37.0" prefWidth="63.0" ripplerFill="#f80000" text="Print" textAlignment="CENTER" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Patient Name">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nameTxt" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                              <Label prefWidth="63.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Patient ID">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="idTxt" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                              <Label prefWidth="63.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Phone No ">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="phoneTxt" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                              <Label prefWidth="63.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Date Of Birth">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="birthTxt" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                              <Label prefWidth="63.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" layoutX="30.0" layoutY="460.0" prefHeight="60.0" prefWidth="633.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="اسم الام" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtMotherName" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                              <Label prefWidth="63.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="633.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="المحافظة  " textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="regionTxt" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                              <Label prefWidth="63.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" layoutX="30.0" layoutY="380.0" prefHeight="60.0" prefWidth="633.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="القضاء " textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtAdress1" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                              <Label prefWidth="63.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" layoutX="30.0" layoutY="462.0" prefHeight="60.0" prefWidth="633.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="الحي " textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtAdress2" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                              <Label prefWidth="63.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Date of entry">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="entryTxt" prefHeight="40.0" prefWidth="300.0" />
+                              <Label prefWidth="63.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" right="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="1000.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Doctor Name">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="doctorTxt" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Diagnosis">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="diagnosisTxt" editable="false" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="302.0" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="ICD 10">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtIcd" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="306.0" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Surface area ">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtsurface" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="344.0" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Weight (Kg)">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtweight" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="280.0" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Height ">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtHeight" prefHeight="40.0" prefWidth="300.0" styleClass="inputText" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="381.0" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Gender ">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="comboGender" prefHeight="40.0" prefWidth="300.0" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="251.0" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="المهنه ">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="ComboJob" prefHeight="40.0" prefWidth="300.0" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="496.0" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="الحالة الزوجيه">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="ComboRelasionShip" prefHeight="40.0" prefWidth="300.0" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="504.0" prefHeight="60.0" prefWidth="402.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text=" التحصيل الدراسي">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="ComboEducation" prefHeight="40.0" prefWidth="300.0" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="1105.0">
+               <children>
+                  <Button fx:id="sendDoctorBtn" layoutX="453.0" layoutY="75.0" mnemonicParsing="false" onAction="#sendDoctor" prefHeight="59.0" prefWidth="247.0" text="Send To Doctor F12">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="buttons" />
+                        <String fx:value="sendButton" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="1085.0" styleClass="statuesBar">
+               <children>
+                  <Label fx:id="messageLabel" prefHeight="27.0" prefWidth="1097.0" textFill="RED">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1239.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.doctor.LabFinishedController">
+    <stylesheets>
+        <URL value="@lab.css" />
+    </stylesheets>
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="1142.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#refresh" prefHeight="50.0" prefWidth="168.0" styleClass="buttons" text="Refresh">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#openPatFile" prefHeight="50.0" prefWidth="141.0" styleClass="buttons" text="Patient File">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#prinrReport" prefHeight="50.0" prefWidth="158.0" styleClass="finished" text="Send to excel ">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+                  <Label prefHeight="35.0" prefWidth="59.0" text="From" textFill="#2f00ff">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="fromDate" prefHeight="31.0" prefWidth="174.0" />
+                  <Label prefHeight="35.0" prefWidth="44.0" text="To" textFill="#2f00ff">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="toDate" prefHeight="31.0" prefWidth="173.0" />
+                  <JFXButton fx:id="search" buttonType="RAISED" onAction="#searchBtn" prefHeight="47.0" prefWidth="127.0" ripplerFill="RED" styleClass="finished" text="Search" />
+               </children>
+            </HBox>
+            <HBox prefHeight="478.0" prefWidth="1105.0" spacing="20.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="575.0" prefWidth="455.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TableView fx:id="table" prefHeight="575.0" prefWidth="485.0" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="colNo" prefWidth="40.0" styleClass="col" text="No" />
+                            <TableColumn fx:id="colPatName" prefWidth="200.0" styleClass="col">
+                                 <graphic>
+                                    <TextField fx:id="txtNameFilter" alignment="CENTER" promptText="Patient Name" />
+                                 </graphic>
+                              </TableColumn>
+                              <TableColumn fx:id="colPatId" prefWidth="110.0" styleClass="col" text="ID" />
+                              <TableColumn fx:id="colPatDoctor" prefWidth="130.0" styleClass="col">
+                                 <graphic>
+                                    <TextField fx:id="txtDoctorFilter" alignment="CENTER" promptText="Doctor" />
+                                 </graphic>
+                              </TableColumn>
+                              <TableColumn fx:id="colPatDAte" prefWidth="90.0" styleClass="col" text="Date" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="660.0" prefWidth="637.0">
+                     <children>
+                        <ComboBox fx:id="comboLabGroup" onAction="#labGroupChange" prefWidth="250.0" />
+                        <TableView fx:id="labTable" onMouseClicked="#openResultFile" prefHeight="575.0" prefWidth="586.0">
+                           <columns>
+                              <TableColumn fx:id="labNo" prefWidth="50.0" styleClass="col" text="NO" />
+                              <TableColumn fx:id="labTest" prefWidth="180.0" styleClass="col" text="Test" />
+                              <TableColumn fx:id="labDate" prefWidth="100.0" styleClass="col" text="Date" />
+                              <TableColumn fx:id="labResult" prefWidth="214.0" styleClass="col" text="Result" />
+                              <TableColumn fx:id="colFile" prefWidth="75.0" styleClass="col" text="File" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

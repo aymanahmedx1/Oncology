@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1024.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@searchforpatient.css" />
+    </stylesheets>
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="1043.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#clear" prefHeight="36.0" prefWidth="104.0" styleClass="buttons" text="Clear">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="724.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label prefHeight="39.0" prefWidth="126.0" text="Doctor Name" textFill="#4400ff">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField focusColor="#ff0303" prefHeight="31.0" prefWidth="323.0" unFocusColor="#2200ff" />
+                     </children>
+                     <padding>
+                        <Insets right="20.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </HBox>
+            <VBox>
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="1014.0" spacing="20.0">
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="59.0" text="From" textFill="#2f00ff">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <DatePicker prefHeight="31.0" prefWidth="173.0" />
+                        <Label prefHeight="35.0" prefWidth="44.0" text="To" textFill="#2f00ff">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <DatePicker prefHeight="31.0" prefWidth="174.0" />
+                        <Label prefHeight="39.0" prefWidth="126.0" text="Diagnosis" textFill="#4400ff">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField focusColor="#ff0303" prefHeight="31.0" prefWidth="323.0" unFocusColor="#2200ff" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="1014.0" spacing="10.0">
+                     <children>
+                        <Label fx:id="nameLbl" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="152.0" text="Patient Name">
+                           <font>
+                              <Font name="Ebrima" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField id="inputText" fx:id="nameTxt" layoutX="14.0" layoutY="7.0" onAction="#findPatient" onKeyPressed="#getPatFromName" onKeyTyped="#nameChanged" prefHeight="40.0" prefWidth="258.0" styleClass="inputText" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <font>
+                              <Font name="SansSerif Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </TextField>
+                        <Label fx:id="idLbl" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="115.0" text="Patient ID" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="Ebrima" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField id="inputText" fx:id="idTxt" onKeyPressed="#getPatientFromId" onKeyTyped="#idChanged" prefHeight="40.0" prefWidth="165.0" styleClass="inputText" GridPane.columnIndex="3">
+                           <font>
+                              <Font name="SansSerif Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#serach" onKeyPressed="#enterToSave" prefHeight="40.0" prefWidth="130.0" styleClass="finished" text="Search" GridPane.columnIndex="4">
+                           <font>
+                              <Font name="System Bold" size="9.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox prefHeight="478.0" prefWidth="1105.0" spacing="20.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="visitTable" onMouseClicked="#getVisitData" prefHeight="472.0" prefWidth="268.0">
+                     <columns>
+                        <TableColumn fx:id="tNumber" prefWidth="52.0" text="NO" />
+                        <TableColumn fx:id="tDate" prefWidth="111.0" text="Date" />
+                     </columns>
+                  </TableView>
+                  <TableView fx:id="descTable" prefHeight="478.0" prefWidth="932.0">
+                     <columns>
+                        <TableColumn fx:id="tDrug" prefWidth="143.0" styleClass="tableColumn" text="Drug" />
+                        <TableColumn fx:id="tDose" prefWidth="64.0" styleClass="tableColumn" text="Dose" />
+                        <TableColumn fx:id="tFluid" prefWidth="81.0" styleClass="tableColumn" text="Fluid" />
+                        <TableColumn fx:id="tVolume" prefWidth="66.0" styleClass="tableColumn" text="Volume" />
+                        <TableColumn fx:id="tNote" prefWidth="430.0" styleClass="tableColumn" text="Note" />
+                     </columns>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

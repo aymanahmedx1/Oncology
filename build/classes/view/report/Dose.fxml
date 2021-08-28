@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="845.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.report.DoseController">
+    <stylesheets>
+        <URL value="@dose.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutY="-6.0" spacing="20.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="1014.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#printPage" prefHeight="50.0" prefWidth="148.0" styleClass="print" text="Print">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="74.0" prefHeight="50.0" prefWidth="1014.0" spacing="10.0">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <children>
+                  <ComboBox fx:id="comboPatType" onAction="#patTypeChange" prefHeight="37.0" prefWidth="233.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="1014.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="59.0" text="From" textFill="#2f00ff">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="fromDate" prefHeight="31.0" prefWidth="174.0" />
+                  <Label prefHeight="35.0" prefWidth="32.0" text="To" textFill="#2f00ff">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="toDate" prefHeight="31.0" prefWidth="173.0" />
+                  <ComboBox fx:id="comboDrugCat" maxHeight="258.0" onAction="#drugCategoryChange" prefHeight="50.0" prefWidth="194.0" />
+                  <JFXButton fx:id="search" buttonType="RAISED" onAction="#searchBtn" prefHeight="47.0" prefWidth="127.0" ripplerFill="RED" styleClass="search" text="Search" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="584.0" prefWidth="1014.0">
+               <children>
+                  <TableView fx:id="presTable" onMouseClicked="#getVisitData" prefHeight="575.0" prefWidth="770.0">
+                     <columns>
+                        <TableColumn fx:id="colNo" prefWidth="50.0" text="No" />
+                        <TableColumn fx:id="colName" prefWidth="390.0" text="Drug name" />
+                        <TableColumn fx:id="colDose" minWidth="2.0" prefWidth="172.0" text="Total dose (in mg)" />
+                        <TableColumn fx:id="colVials" minWidth="2.0" prefWidth="154.0" text="No. of vials" />
+                     </columns>
+                  </TableView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,47 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.buttons{
+    -fx-background-color:blue ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.finished{
+    -fx-background-color:green ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.labelAndText{
+    -fx-font: 19px sans-serif;
+    -fx-font-weight: bold;
+    -fx-padding: 10;
+}
+.lab{
+    -fx-background-color:#6666ff ;
+    -fx-alignment: CENTER;
+}
+.tf{
+    -fx-pref-width:150px ;
+    -fx-alignment: CENTER;
+    -fx-font: 19px sans-serif;
+    -fx-font-weight: bold;
+}
+.main{
+    -fx-background-color:transparent ;
+    -fx-border-color: #000066 ;
+    -fx-border-style: solid ; 
+    -fx-border-width: 1px;
+    -fx-padding: 5;
+}
+.testName{
+    -fx-pref-width:120px ;
+    -fx-alignment: CENTER ;
+    -fx-font: 15px sans-serif;
+    -fx-font-weight: bold;
+}

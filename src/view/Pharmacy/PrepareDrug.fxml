@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="764.0" prefWidth="1152.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.pharmacy.PrepareDrugController">
+    <stylesheets>
+        <URL value="@preparedrug.css" />
+    </stylesheets>
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="1142.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#getData" prefHeight="50.0" prefWidth="104.0" styleClass="buttons" text="Refresh">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#openPatFile" prefHeight="50.0" prefWidth="168.0" styleClass="patFile" text="Patient File">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#prinrReport" prefHeight="50.0" prefWidth="176.0" styleClass="finished" text="Send to excel ">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="todayDateLbl" prefHeight="35.0" prefWidth="166.0" textFill="#0eae31">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblTime" prefHeight="35.0" prefWidth="171.0" textFill="#0eae31">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="1142.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="59.0" text="From" textFill="#2f00ff">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="fromDate" prefHeight="31.0" prefWidth="174.0" />
+                  <Label prefHeight="35.0" prefWidth="44.0" text="To" textFill="#2f00ff">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="toate" prefHeight="31.0" prefWidth="173.0" />
+                  <JFXButton fx:id="search" buttonType="RAISED" onAction="#searchBtn" prefHeight="47.0" prefWidth="127.0" ripplerFill="RED" styleClass="finished" text="Search" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="1014.0" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="51.0" text="SA">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtSA" editable="false" prefHeight="45.0" prefWidth="78.0" />
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="60.0" text="WT" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtWt" editable="false" prefHeight="45.0" prefWidth="69.0" />
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="58.0" text="Age">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtAge" editable="false" prefHeight="45.0" prefWidth="55.0" />
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="71.0" text="Region">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtRegion" editable="false" prefHeight="45.0" prefWidth="108.0" />
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="88.0" text="diagnosis">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtDia" editable="false" prefHeight="45.0" prefWidth="311.0" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="478.0" prefWidth="1105.0" spacing="20.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="115.0" prefWidth="422.0">
+                           <children>
+                              <ComboBox fx:id="comboDrugCat" onAction="#combPrescription" prefHeight="37.0" prefWidth="233.0" />
+                              <TextField fx:id="txtDrugFilter" promptText="Drug Filter" />
+                           </children>
+                        </HBox>
+                        <TableView fx:id="presTable" onMouseClicked="#getVisitData" prefHeight="516.0" prefWidth="551.0" styleClass="presTable" VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn fx:id="noCol" prefWidth="43.0" text="No." />
+                              <TableColumn fx:id="patNameCol" prefWidth="147.0">
+                                 <graphic>
+                                    <TextField fx:id="txtNameFilter" alignment="CENTER" promptText="Name Filter" />
+                                 </graphic></TableColumn>
+                              <TableColumn fx:id="patIdCol" minWidth="2.0" prefWidth="88.0" text="ID" />
+                              <TableColumn fx:id="doctorCol" minWidth="2.0" prefWidth="141.0">
+                                 <graphic>
+                                    <TextField fx:id="txtDoctorFilter" alignment="CENTER" prefHeight="37.0" prefWidth="149.0" promptText="Doctor" />
+                                 </graphic></TableColumn>
+                              <TableColumn fx:id="colDate" minWidth="2.0" prefWidth="100.0" text="Date" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <TabPane prefHeight="482.0" prefWidth="629.0" HBox.hgrow="ALWAYS">
+                     <tabs>
+                        <Tab closable="false" text="Drugs">
+                           <content>
+                              <TableView fx:id="descTable" onMouseClicked="#drugDetialsClick" prefHeight="478.0" prefWidth="829.0">
+                                 <columns>
+                                    <TableColumn fx:id="colNoDrug" prefWidth="50.0" text="No" />
+                                    <TableColumn fx:id="tDrug" prefWidth="128.0" styleClass="tableColumn" text="Drug" />
+                                    <TableColumn fx:id="tDose" prefWidth="65.0" styleClass="tableColumn" text="Dose" />
+                                    <TableColumn fx:id="tFluid" prefWidth="75.0" styleClass="tableColumn" text="Fluid" />
+                                    <TableColumn fx:id="tVolume" styleClass="tableColumn" text="Volume" />
+                                    <TableColumn fx:id="tNote" prefWidth="200.0" styleClass="tableColumn" text="Note" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                           <graphic>
+                              <ComboBox fx:id="comboDetailCat" onAction="#comboDetai" prefHeight="37.0" prefWidth="213.0" />
+                           </graphic>
+                        </Tab>
+                        <Tab fx:id="labTab" closable="false" text="Lab">
+                           <content>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="labTable" prefHeight="445.0" prefWidth="700.0">
+                                       <columns>
+                                          <TableColumn fx:id="labNo" prefWidth="100.0" styleClass="tableColumn" text="NO" />
+                                          <TableColumn fx:id="labTest" prefWidth="140.0" styleClass="tableColumn" text="Test" />
+                                          <TableColumn fx:id="labDate" prefWidth="140.0" styleClass="tableColumn" text="Date" />
+                                          <TableColumn fx:id="labResult" prefWidth="300.0" styleClass="tableColumn" text="Result" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox prefHeight="768.0" prefWidth="1179.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.pharmacy.PHCallScreenController">
+
+    <children>
+        <VBox prefHeight="768.0" prefWidth="279.0" HBox.hgrow="ALWAYS">
+            <children>
+                <TableView fx:id="tableOne" prefHeight="200.0" prefWidth="200.0" stylesheets="@phcallscreen.css" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="oneNo" prefWidth="54.0" text="No" />
+                        <TableColumn fx:id="oneName" prefWidth="150.0" text="Name" />
+                        <TableColumn fx:id="oneId" prefWidth="87.0" text="ID" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+        <VBox layoutX="10.0" layoutY="10.0" prefHeight="768.0" prefWidth="279.0" HBox.hgrow="ALWAYS">
+            <children>
+                <TableView fx:id="tableTow" prefHeight="200.0" prefWidth="200.0" stylesheets="@phcallscreen.css" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="towNo" prefWidth="54.0" text="No" />
+                        <TableColumn fx:id="towName" prefWidth="150.0" text="Name" />
+                        <TableColumn fx:id="towId" prefWidth="87.0" text="ID" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+        <VBox layoutX="10.0" layoutY="10.0" prefHeight="768.0" prefWidth="279.0" HBox.hgrow="ALWAYS">
+            <children>
+                <TableView fx:id="tableThree" prefHeight="200.0" prefWidth="200.0" stylesheets="@phcallscreen.css" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="threeNo" prefWidth="54.0" text="No" />
+                        <TableColumn fx:id="threeName" prefWidth="150.0" text="Name" />
+                        <TableColumn fx:id="threeId" prefWidth="87.0" text="ID" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+        <VBox layoutX="10.0" layoutY="10.0" prefHeight="768.0" prefWidth="279.0" HBox.hgrow="ALWAYS">
+            <children>
+                <TableView fx:id="tableFour" prefHeight="200.0" prefWidth="200.0" stylesheets="@phcallscreen.css" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="fourNo" prefWidth="54.0" text="No" />
+                        <TableColumn fx:id="fourName" prefWidth="150.0" text="Name" />
+                        <TableColumn fx:id="fourId" prefWidth="87.0" text="ID" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</HBox>

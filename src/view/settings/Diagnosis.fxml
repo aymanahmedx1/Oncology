@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.settings.DiagnosisController">
+    <stylesheets>
+        <URL value="@region.css" />
+    </stylesheets>
+   <children>
+      <HBox>
+         <children>
+            <VBox alignment="CENTER" prefHeight="683.0" prefWidth="365.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <GridPane alignment="CENTER" prefHeight="158.0" prefWidth="356.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="103.0" text="Diagnosis" />
+                        <TextField fx:id="txtDiagnosis" GridPane.columnIndex="1" />
+                        <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <JFXButton buttonType="RAISED" onAction="#save" prefHeight="37.0" prefWidth="157.0" ripplerFill="#26ff1f" styleClass="saveBtn" text="Save " />
+                           </children>
+                        </HBox>
+                        <JFXButton buttonType="RAISED" onAction="#clear" prefHeight="37.0" prefWidth="157.0" ripplerFill="#26ff1f" styleClass="clr" text="clear" GridPane.rowIndex="1" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="10.0" prefHeight="683.0" prefWidth="365.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="table" onMouseClicked="#updateItem" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="colName" prefWidth="355.0">
+                           <graphic>
+                              <TextField fx:id="txtFilter" alignment="CENTER" promptText="Diagnosis Filter" />
+                           </graphic>
+                        </TableColumn>
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>
