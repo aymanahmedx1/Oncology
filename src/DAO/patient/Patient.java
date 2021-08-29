@@ -18,7 +18,9 @@ public class Patient {
 
     public static final int MALE = 1;
     public static final int FEMALE = 0;
-
+    public static final int DEATH = 10;
+    public static final int BLACK_LIST = 5;
+    
     private int id;
     private String patId;
     private String name;

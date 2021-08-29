@@ -7,7 +7,9 @@ package controller.reception;
 
 import BAO.AddressManage;
 import BAO.RegionManage;
+import BAO.patient.PatientState;
 import DAO.Address;
+import DAO.DeathInfo;
 import DAO.Region;
 import DAO.ReportData;
 import DAO.patient.Patient;
@@ -39,7 +41,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -524,9 +525,6 @@ public class ReceptionController implements Initializable {
         nameTxt.textProperty().addListener((observable, oldValue, newValue) -> {
             nameAuto();
         });
-        idTxt.textProperty().addListener((observable, oldValue, newValue) -> {
-            idAuto();
-        });
         barcodeTxt.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.equals("")) {
                 pattern = Pattern.compile("\\d*", Pattern.CASE_INSENSITIVE);
@@ -553,6 +551,7 @@ public class ReceptionController implements Initializable {
             Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     private void getPatientByFileID() {
         try {
             allPatient = PAT_MANAGE.findPatID(idTxt.getText());
@@ -691,7 +690,16 @@ public class ReceptionController implements Initializable {
             txtAdress2.setText(currenAddress.getAdd2());
             txtHeight.setText(currentPatient.getHeight() + "");
             txtMotherName.setText(currentPatient.getMotherName());
-            sendDoctorBtn.setDisable(false);
+            if (currentPatient.getBlackList() == Patient.DEATH) {
+                DeathInfo df = new PatientState().getDeathNote(currentPatient);
+                sendDoctorBtn.setDisable(true);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "this patient Marked as Dead\n"
+                        + "in Date : " + df.getDate(), ButtonType.OK);
+                alert.setTitle("Dead Patient");
+                alert.show();
+            } else {
+                sendDoctorBtn.setDisable(false);
+            }
             onOffFileds(false);
         } catch (SQLException ex) {
             Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);

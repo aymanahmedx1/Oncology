@@ -374,4 +374,42 @@ public class PrescriptionManagement {
             throw new SQLException();
         }
     }
+
+    public ArrayList<Prescription> AllPrescription(Date from, Date to) throws SQLException {
+        int no = 1;
+        try {
+            String sql = "SELECT pres.id , pat.id,pat.pat_id,pat.name,pat.birth"
+                    + ",pres.date,pres.user_id , u.name , pres.is_check \n"
+                    + "from prescription_no as pres\n"
+                    + "JOIN patient as pat on pres.patient_id = pat.id\n"
+                    + "JOIN users as u on u.id = pres.user_id where  pres.date between ? and ? " ;
+            PreparedStatement stmnt = con.prepareStatement(sql);
+            stmnt.setDate(1, from);
+            stmnt.setDate(2, to);
+            ResultSet rs = stmnt.executeQuery();
+            ArrayList<Prescription> patVisits = new ArrayList<>();
+            while (rs.next()) {
+                Prescription pres = new Prescription();
+                pres.setId(rs.getInt(1));
+                pres.setPatientId(rs.getInt(2));
+                pres.setPatientNumber(rs.getString(3));
+                pres.setPatientName(rs.getString(4));
+                int age = Helpers.calculateAge(rs.getDate(5).toLocalDate());
+                if (age != 0) {
+                    pres.setAge(age);
+                }
+                pres.setDate(rs.getDate(6));
+                pres.setUser(rs.getInt(7));
+                pres.setDoctorName(rs.getString(8));
+                pres.setNo(no++);
+                pres.setChecked(rs.getInt(9));
+                patVisits.add(pres);
+            }
+            return patVisits;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new SQLException();
+        }
+    }
+
 }

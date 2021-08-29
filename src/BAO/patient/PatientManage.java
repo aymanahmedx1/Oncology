@@ -12,7 +12,6 @@ import DAO.patient.Patient;
 import DAO.user.User;
 import commons.DBConnection;
 import commons.DbStatments;
-import commons.JobState;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;

@@ -28,92 +28,102 @@
             </HBox>
             <FlowPane alignment="CENTER_LEFT" prefHeight="188.0" prefWidth="1222.0" styleClass="mainFxmlClass">
                <children>
-                  <Button fx:id="addPatient" mnemonicParsing="false" onAction="#addPatient" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Reception" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#addPatient" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Reception" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="doctor" mnemonicParsing="false" onAction="#doctor" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Doctor" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#doctor" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Doctor" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="drugBtn" mnemonicParsing="false" onAction="#drug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drugs " textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#drug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drugs " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn" mnemonicParsing="false" onAction="#labTests" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Tests" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#labTests" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Tests" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn" mnemonicParsing="false" onAction="#lab" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="LAB" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#lab" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="LAB" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn1" mnemonicParsing="false" onAction="#prepareDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Prepare Drug" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#prepareDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Prepare Drug" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn11" mnemonicParsing="false" onAction="#pharmacy" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Clinical Pharmacy" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#pharmacy" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Clinical Pharmacy" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn111" mnemonicParsing="false" onAction="#drugDose" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drug Dose" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#drugDose" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drug Dose" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn1111" mnemonicParsing="false" onAction="#searchForDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Drug" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#searchForDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Drug" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn11111" mnemonicParsing="false" onAction="#searchForPat" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Patient" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#searchForPat" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Patient" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn111111" mnemonicParsing="false" onAction="#patCost" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Patient Cost" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#patCost" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Patient Cost" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn1111111" mnemonicParsing="false" onAction="#ppatManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Patient Management" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#ppatManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Patient Management" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn11111111" mnemonicParsing="false" onAction="#doctorScreen" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Doctor Screen" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#doctorScreen" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Doctor Screen" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn111111111" mnemonicParsing="false" onAction="#drugScreen" prefHeight="60.0" prefWidth="376.0" styleClass="catButtons" text="Doctor and chemo check screen" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#drugScreen" prefHeight="60.0" prefWidth="376.0" styleClass="catButtons" text="Doctor and chemo check screen" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn1111111111" mnemonicParsing="false" onAction="#cemoCheck" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Chemo Check" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#cemoCheck" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Chemo Check" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn11111111111" mnemonicParsing="false" onAction="#labScreen" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Screen" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#labScreen" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Screen" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn111111111111" mnemonicParsing="false" onAction="#regionManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Region Manage" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#regionManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Region Manage" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="labBtn1111111111111" mnemonicParsing="false" onAction="#diagnosisManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Diagnosis Manage" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#diagnosisManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Diagnosis Manage" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="260.0" layoutY="250.0" mnemonicParsing="false" onAction="#death" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Death Note" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#blackList" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Black List" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>

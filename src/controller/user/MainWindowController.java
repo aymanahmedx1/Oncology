@@ -15,6 +15,7 @@ import controller.doctor.LabController;
 import controller.doctor.LabScreenController;
 import controller.drug.DrugDataController;
 import controller.drug.LabDataController;
+import controller.patient.BlackListController;
 import controller.patient.PatientCostController;
 import controller.patient.PatientManagementController;
 import controller.patient.SearchForPatController;
@@ -22,6 +23,7 @@ import controller.pharmacy.CemoCheckController;
 import controller.pharmacy.PHCallScreenController;
 import controller.pharmacy.PharmacyController;
 import controller.pharmacy.PrepareDrugController;
+import controller.reception.DeathNoteController;
 import controller.reception.ReceptionController;
 import controller.report.DoseController;
 import controller.report.SearchForDrugController;
@@ -68,44 +70,10 @@ public class MainWindowController implements Initializable {
     private Label username;
     @FXML
     private Button logOutBtn;
-    @FXML
-    private Button addPatient;
     private Accordion accordion;
     private TitledPane patientTab;
     @FXML
-    private Button doctor;
-    @FXML
-    private Button drugBtn;
-    @FXML
-    private Button labBtn;
-    @FXML
-    private Button labBtn1;
-    @FXML
-    private Button labBtn11;
-    @FXML
     private Button databaseChanges;
-    @FXML
-    private Button labBtn111;
-    @FXML
-    private Button labBtn1111;
-    @FXML
-    private Button labBtn11111;
-    @FXML
-    private Button labBtn111111;
-    @FXML
-    private Button labBtn1111111;
-    @FXML
-    private Button labBtn11111111;
-    @FXML
-    private Button labBtn111111111;
-    @FXML
-    private Button labBtn1111111111;
-    @FXML
-    private Button labBtn11111111111;
-    @FXML
-    private Button labBtn111111111111;
-    @FXML
-    private Button labBtn1111111111111;
 
     /**
      * Initializes the controller class.
@@ -598,6 +566,51 @@ public class MainWindowController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle(" Region Management");
 //               stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(scene);
+            stage.initOwner(currentStage);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.showAndWait();
+        } catch (IOException ex) {
+            Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void death(ActionEvent event) {
+
+        try {
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/reception/DeathNote.fxml"));
+            root = loader.load();
+            DeathNoteController manage = loader.getController();
+            manage.setStage(currentStage);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setResizable(true);
+            stage.setTitle(" Death Note ");
+//            stage.getIcons().add(new Image("/com/zsalse/icons/LogInIcon.jpg"));
+            stage.setScene(scene);
+            stage.initOwner(currentStage);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.showAndWait();
+        } catch (IOException ex) {
+            Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void blackList(ActionEvent event) {
+        try {
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/patient/BlackList.fxml"));
+            root = loader.load();
+            BlackListController manage = loader.getController();
+            manage.setStage(currentStage);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle(" Black List");
             stage.setScene(scene);
             stage.initOwner(currentStage);
             stage.initModality(Modality.WINDOW_MODAL);
