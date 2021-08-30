@@ -88,7 +88,7 @@
 }
 .catButtons{
     -fx-background-color: transparent ;
-        -fx-text-fill: #000000;
+    -fx-text-fill: #000000;
 
 }
 .catButtons:hover{
@@ -99,6 +99,17 @@
     -fx-border-color: #faab00 ;
     -fx-border-radius: 30;
 }
+.catButtons{
+    -fx-text-fill: #FFF;
+
+    -fx-background-color: #000033 ;
+    /*-fx-border-style: solid ;*/ 
+    /*    -fx-border-width: 3px; 
+        -fx-border-color: #faab00 ;
+        -fx-border-radius: 30;*/
+    -fx-background-radius:40; 
+
+}
 .logo_lbl{
     -fx-text-fill: #000000;
     -fx-font: 41px sans-serif ;
@@ -107,4 +118,14 @@
     -fx-border-width: 3px; 
     -fx-border-color: #faab00 ;
     -fx-border-radius: 30;
+}
+.delete{
+    -fx-background-color: transparent;
+    -fx-text-fill: #cccccc
+}
+.tab-pane
+{
+    -fx-tab-min-width: 150.0px;
+    -fx-font: 16px sans-serif ;
+
 }

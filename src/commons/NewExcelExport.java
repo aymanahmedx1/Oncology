@@ -141,23 +141,23 @@ public class NewExcelExport {
         }
     }
 
-    public void prepareDrugToExcel(Stage stage, ArrayList<Prescription> pres, LocalDate from, LocalDate to, int drugSelected, String catName) throws SQLException {
+    public void prepareDrugToExcel(Stage stage, ArrayList<Prescription> pres, LocalDate from, LocalDate to,
+            int drugSelected, String catName) throws SQLException {
         File se = fileName(stage);
         if (se == null) {
             return;
         }
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Prepare Drug Report ");
-                sheet.autoSizeColumn(0);
-                System.out.println(sheet.getColumnWidth(0));
-        sheet.setColumnWidth(1,8000);
-        sheet.setColumnWidth(2,4000);
-        sheet.setColumnWidth(3,5000);
-        sheet.setColumnWidth(4,3000);
-        sheet.setColumnWidth(5,5000);
-        sheet.setColumnWidth(6,3000);
-        sheet.setColumnWidth(7,8000);
-        sheet.setColumnWidth(8,255*255);
+        sheet.setColumnWidth(0, 1000);
+        sheet.setColumnWidth(1, 8000);
+        sheet.setColumnWidth(2, 2500);
+        sheet.setColumnWidth(3, 5000);
+        sheet.setColumnWidth(4, 2500);
+        sheet.setColumnWidth(5, 2000);
+        sheet.setColumnWidth(6, 2000);
+        sheet.setColumnWidth(7, 10000);
+        sheet.setColumnWidth(8, 255 * 255);
         CellStyle cs = contentStyle(workbook, sheet);
         CellStyle header = headerStyle(workbook, sheet);
         Row pageHead = sheet.createRow(0);
@@ -219,7 +219,7 @@ public class NewExcelExport {
                 cell.setCellValue((String) detail.getDrugName());
                 cell2.setCellValue((String) detail.getDose());
                 cell3.setCellValue((String) detail.getFluidName());
-                String vol = String.valueOf((detail.getVolume() == 0 ) ?"" : detail.getVolume()) ;
+                String vol = String.valueOf((detail.getVolume() == 0) ? "" : detail.getVolume());
                 cell4.setCellValue((String) vol);
                 cell5.setCellValue((String) detail.getNote());
                 cell.setCellStyle(cs);
@@ -232,7 +232,6 @@ public class NewExcelExport {
             }
             columnCount = 0;
         }
-
 
         try (FileOutputStream outputStream = new FileOutputStream(se.getPath() + ".xlsx")) {
             workbook.write(outputStream);

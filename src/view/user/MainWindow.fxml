@@ -18,118 +18,225 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" styleClass="mainFxmlClass">
-               <children>
-                  <Label alignment="CENTER" onMouseClicked="#manageDelete" prefHeight="78.0" prefWidth="491.0" styleClass="logo_lbl" text="Oncology Pharmacy" textFill="WHITE">
-                     <HBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </HBox.margin></Label>
-               </children>
-            </HBox>
-            <FlowPane alignment="CENTER_LEFT" prefHeight="188.0" prefWidth="1222.0" styleClass="mainFxmlClass">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#addPatient" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Reception" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#doctor" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Doctor" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#drug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drugs " textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#labTests" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Tests" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#lab" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="LAB" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#prepareDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Prepare Drug" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#pharmacy" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Clinical Pharmacy" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#drugDose" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drug Dose" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#searchForDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Drug" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#searchForPat" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Patient" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#patCost" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Patient Cost" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#ppatManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Patient Management" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#doctorScreen" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Doctor Screen" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#drugScreen" prefHeight="60.0" prefWidth="376.0" styleClass="catButtons" text="Doctor and chemo check screen" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#cemoCheck" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Chemo Check" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#labScreen" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Screen" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#regionManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Region Manage" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#diagnosisManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Diagnosis Manage" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="260.0" layoutY="250.0" mnemonicParsing="false" onAction="#death" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Death Note" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#blackList" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Black List" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                  </Button>
-               </children>
-            </FlowPane>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Reception">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#addPatient" prefHeight="60.0" prefWidth="212.0" styleClass="catButtons" text="Reception" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                </Tab>
+                <Tab text="Doctor">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#doctor" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Doctor" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                </Tab>
+                  <Tab text="Checmo ckeck">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#cemoCheck" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Chemo Check" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Pharmacy">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#pharmacy" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Clinical Pharmacy" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#prepareDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Prepare Drug" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#drug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drugs " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#drugDose" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drug Dose" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#ppatManage" prefHeight="60.0" prefWidth="286.0" styleClass="catButtons" text="Patient Management" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#patCost" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Patient Cost" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Lab">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#lab" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="LAB" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#labTests" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Tests" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Pharmacy Screens">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#doctorScreen" prefHeight="60.0" prefWidth="398.0" styleClass="catButtons" text=" Doctor and chemo check screen" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#labScreen" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Screen" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#drugScreen" prefHeight="60.0" prefWidth="306.0" styleClass="catButtons" text="Pharmacy Screen" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Patient">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#searchForPat" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Patient" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Drugs">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#searchForDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Drug" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Diagnosis And region">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#diagnosisManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Diagnosis Manage" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#regionManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Region Manage" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Black List">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#blackList" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Black List" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Death Note">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#death" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Death Note" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Settings">
+                     <content>
+                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#UserManagement" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="User Management" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#blackList" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Preferences" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#manageDelete" prefHeight="60.0" prefWidth="312.0" text="Delete Program Data" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="catButtons" />
+                                    <String fx:value="delete" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </FlowPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
          </children>
       </VBox>
       <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

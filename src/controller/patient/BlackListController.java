@@ -6,8 +6,8 @@
 package controller.patient;
 
 import BAO.PrescriptionManagement;
-import BAO.patient.PatientState;
-import DAO.DeathInfo;
+import BAO.VisitManagement;
+import DAO.CallItem;
 import DAO.Prescription;
 import DAO.VisitData;
 import DAO.patient.Patient;
@@ -27,26 +27,27 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.application.Platform;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -57,6 +58,7 @@ import javafx.util.StringConverter;
  */
 public class BlackListController implements Initializable {
 
+    private final PrescriptionManagement PRES = new PrescriptionManagement();
     private Stage stage;
     private ObservableList<Prescription> allPrescriptions;
     private ObservableList<VisitData> visitDetalis = FXCollections.observableArrayList();
@@ -65,6 +67,7 @@ public class BlackListController implements Initializable {
     private Patient currentPatient;
     private HashMap<String, Patient> patentMap = new HashMap<>();
     private ArrayList<Patient> allPatient;
+    private final VisitManagement VISIT = new VisitManagement();
 
     @FXML
     private DatePicker fromDate;
@@ -113,7 +116,9 @@ public class BlackListController implements Initializable {
     @FXML
     private TableColumn<VisitData, VisitData> tNote;
     @FXML
-    private TableColumn<?, ?> colNoDrug;
+    private TableColumn<VisitData, VisitData> colNoDrug;
+    @FXML
+    private TableColumn<VisitData, VisitData> tCeck;
 
     /**
      * Initializes the controller class.
@@ -133,6 +138,15 @@ public class BlackListController implements Initializable {
 
     @FXML
     private void Add(ActionEvent event) {
+        try {
+            int lastPresNo = PRES.getPatientLastPrescriptionID(currentPatient);
+            if (lastPresNo != -1) {
+                PRES.updatePrescriptionState(lastPresNo, Patient.BLACK_LIST);
+            }
+            getData();
+        } catch (SQLException ex) {
+            Logger.getLogger(BlackListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -145,47 +159,97 @@ public class BlackListController implements Initializable {
     }
 
     private void setTableUI() {
+        noCol.prefWidthProperty().bind(presTable.widthProperty().multiply(0.1));
+        patNameCol.prefWidthProperty().bind(presTable.widthProperty().multiply(0.6));
+        doctorCol.prefWidthProperty().bind(presTable.widthProperty().multiply(0.3));
         noCol.setCellValueFactory(new PropertyValueFactory<>("no"));
         patNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
         doctorCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         presTable.setItems(allPrescriptions);
         /////Details Table
+        colNoDrug.prefWidthProperty().bind(descTable.widthProperty().multiply(0.1));
+        tDrug.prefWidthProperty().bind(descTable.widthProperty().multiply(0.2));
+        tDose.prefWidthProperty().bind(descTable.widthProperty().multiply(0.1));
+        tFluid.prefWidthProperty().bind(descTable.widthProperty().multiply(0.1));
+        tVolume.prefWidthProperty().bind(descTable.widthProperty().multiply(0.1));
+        tNote.prefWidthProperty().bind(descTable.widthProperty().multiply(0.3));
+        tCeck.prefWidthProperty().bind(descTable.widthProperty().multiply(0.1));
         colNoDrug.setCellValueFactory(new PropertyValueFactory<>("no"));
         tDrug.setCellValueFactory(new PropertyValueFactory<>("drugName"));
         tDose.setCellValueFactory(new PropertyValueFactory<>("dose"));
         tFluid.setCellValueFactory(new PropertyValueFactory<>("fluidName"));
         tVolume.setCellValueFactory(new PropertyValueFactory<>("volume"));
         tNote.setCellValueFactory(new PropertyValueFactory<>("note"));
-        descTable.setItems(visitDetalis);
+        tCeck.setCellValueFactory(
+                param -> new ReadOnlyObjectWrapper<>(param.getValue())
+        );
+        tCeck.setCellFactory(param -> new TableCell<VisitData, VisitData>() {
+            @Override
+            protected void updateItem(VisitData item, boolean empty) {
+                super.updateItem(item, empty);
+                CheckBox check = new CheckBox();
+                if (item == null) {
+                    setGraphic(null);
+                } else {
+                    if (item.getBlack() == Patient.BLACK_LIST) {
+                        check.setSelected(true);
+                        setGraphic(check);
+                    } else {
+                        check.setSelected(false);
+                        setGraphic(check);
+                    }
+                }
+                check.setOnAction((event) -> {
+                    try {
+                        if (check.isSelected()) {
+                            VISIT.updateVisitItemBlack(item, Patient.BLACK_LIST);
+                        } else {
+                            VISIT.updateVisitItemBlack(item, 0);
+
+                        }
+                        getData();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(BlackListController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+
+            }
+        ;
+
+        }
+
+            );
+            descTable.setItems(visitDetalis);
+        descTable.setRowFactory(tv -> new TableRow<VisitData>() {
+            @Override
+            protected void updateItem(VisitData item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null) {
+                    setStyle("");
+                } else {
+                    if (item.getBlack() == Patient.BLACK_LIST) {
+                        setStyle(" -fx-background-color:red ;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+
+            }
+
+        });
     }
 
     private void autotAll() {
         pop.getStyleClass().add("menu");
-        txtId.focusedProperty().addListener((ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) -> {
+        txtId.textProperty().addListener((observable, oldValue, newValue) -> {
             idAuto();
         });
-
-        pop.getStyleClass().add("menu");
 
         txtName.textProperty().addListener((observable, oldValue, newValue) -> {
             nameAuto();
         });
         txtBarcode.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.equals("")) {
-                pattern = Pattern.compile("\\d*", Pattern.CASE_INSENSITIVE);
-                Matcher matcher = pattern.matcher(newValue);
-                if (matcher.matches()) {
-                    try {
-                        currentPatient = PAT_MANAGE.findByBarcode(Integer.parseInt(newValue));
-                        if (currentPatient != null) {
-                            setPatToUi();
-                            pop.hide();
-                        }
-                    } catch (SQLException ex) {
-                        System.out.println(ex.getMessage());
-                    }
-                }
-            }
+            bracodeAuto();
         });
     }
 
@@ -200,8 +264,9 @@ public class BlackListController implements Initializable {
         txtDoctor.setText(currentPatient.getDoctor().getName());
         txtDia.setText(currentPatient.getDiagnosis().getName());
         txtRegion.setText(currentPatient.getRegion().getName());
+
         if (currentPatient.getBlackList() == Patient.BLACK_LIST) {
-            System.out.println("Black list");
+
         } else {
         }
 //        } catch (SQLException ex) {
@@ -221,7 +286,7 @@ public class BlackListController implements Initializable {
         for (Patient r : allPatient) {
             patentMap.put(r.getName(), r);
             MenuItem m = new MenuItem(r.getName());
-//            m.setStyle("-fx-pref-width:" + txtName.getWidth() + ";");
+            m.setStyle("-fx-pref-width:" + txtName.getWidth() + ";");
             m.setOnAction((event) -> {
                 pop.hide();
                 currentPatient = patentMap.get(m.getText());
@@ -233,6 +298,32 @@ public class BlackListController implements Initializable {
         txtName.setContextMenu(pop);
 
         pop.show(txtName, Side.BOTTOM, 0, 0);
+    }
+
+    private void bracodeAuto() {
+        if (txtBarcode.getText().equals("")) {
+            if (pop.isShowing()) {
+                pop.hide();
+            }
+            return;
+        }
+        getPatientByID();
+        pop.getItems().clear();
+        for (Patient r : allPatient) {
+            patentMap.put(String.valueOf(r.getId()), r);
+            MenuItem m = new MenuItem(String.valueOf(r.getId()));
+            m.setStyle("-fx-pref-width:" + txtBarcode.getWidth() + ";");
+            m.setOnAction((event) -> {
+                pop.hide();
+                currentPatient = patentMap.get(m.getText());
+                setPatToUi();
+            });
+            pop.getItems().add(m);
+
+        }
+        txtBarcode.setContextMenu(pop);
+
+        pop.show(txtBarcode, Side.BOTTOM, 0, 0);
     }
 
     private void idAuto() {
@@ -271,7 +362,7 @@ public class BlackListController implements Initializable {
 
     private void getPatientByFileID() {
         try {
-            allPatient = PAT_MANAGE.findPatID(txtId.getText());
+            allPatient = PAT_MANAGE.findPatFileId(txtId.getText());
         } catch (SQLException ex) {
             Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -382,4 +473,13 @@ public class BlackListController implements Initializable {
             Logger.getLogger(PrepareDrugController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    private void getPatientByID() {
+        try {
+            allPatient = PAT_MANAGE.findPatID(txtBarcode.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

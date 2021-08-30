@@ -70,7 +70,7 @@ public class VisitManagement {
         int no = 1;
         try (Connection conn = DBConnection.createConnection()) {
             String sql = "SELECT p.id,p.drug,d.drug_name,p.dose,p.fluid,f.drug_name,"
-                    + "p.volume,p.note,p.is_checked , d.main_category "
+                    + "p.volume,p.note,p.is_checked , d.main_category ,p.black "
                     + "FROM prescription_detail as p "
                     + "join drugs as d on p.drug=d.id left  "
                     + "join drugs as f on p.fluid=f.id "
@@ -92,6 +92,7 @@ public class VisitManagement {
                 visit.setCheck(resultSet.getInt(9));
                 visit.setCategory(resultSet.getInt(10));
                 visit.setNo(no++);
+                visit.setBlack(resultSet.getInt(11));
                 patVisits.add(visit);
             }
 
@@ -189,6 +190,18 @@ public class VisitManagement {
             String sql = "UPDATE prescription_detail SET is_checked = ? WHERE id = ?;";
             PreparedStatement stmnt = conn.prepareStatement(sql);
             stmnt.setInt(1, visit.getCheck());
+            stmnt.setInt(2, visit.getId());
+            stmnt.executeUpdate();
+        } catch (SQLException ex) {
+            throw new SQLException(ex.getMessage());
+        }
+    }
+
+    public void updateVisitItemBlack(VisitData visit, int black) throws SQLException {
+        try (Connection conn = DBConnection.createConnection();) {
+            String sql = "UPDATE prescription_detail SET black = ? WHERE id = ?;";
+            PreparedStatement stmnt = conn.prepareStatement(sql);
+            stmnt.setInt(1, black);
             stmnt.setInt(2, visit.getId());
             stmnt.executeUpdate();
         } catch (SQLException ex) {

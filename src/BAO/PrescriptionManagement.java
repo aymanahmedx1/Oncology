@@ -264,6 +264,18 @@ public class PrescriptionManagement {
         }
     }
 
+    public void updatePrescriptionState(int presID, int PresState) throws SQLException {
+        try {
+            String sql = "UPDATE prescription_no set black = ? WHERE id = ?";
+            PreparedStatement stmnt = con.prepareStatement(sql);
+            stmnt.setInt(1, PresState);
+            stmnt.setInt(2, presID);
+            stmnt.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
     public boolean isPatHasPrescToday(int patId) {
         try {
             String sql = "SELECT * FROM oncology.prescription_no where patient_id = ? and date = ?";
@@ -382,10 +394,11 @@ public class PrescriptionManagement {
                     + ",pres.date,pres.user_id , u.name , pres.is_check \n"
                     + "from prescription_no as pres\n"
                     + "JOIN patient as pat on pres.patient_id = pat.id\n"
-                    + "JOIN users as u on u.id = pres.user_id where  pres.date between ? and ? " ;
+                    + "JOIN users as u on u.id = pres.user_id where  pres.date between ? and ? and pres.black = ? ";
             PreparedStatement stmnt = con.prepareStatement(sql);
             stmnt.setDate(1, from);
             stmnt.setDate(2, to);
+            stmnt.setInt(3, Patient.BLACK_LIST);
             ResultSet rs = stmnt.executeQuery();
             ArrayList<Prescription> patVisits = new ArrayList<>();
             while (rs.next()) {
@@ -412,4 +425,20 @@ public class PrescriptionManagement {
         }
     }
 
+    public int getPatientLastPrescriptionID(Patient pat) throws SQLException {
+        try {
+            String sql = "SELECT max(id) from prescription_no WHERE patient_id=?";
+            PreparedStatement stmnt = con.prepareStatement(sql);
+            stmnt.setInt(1, pat.getId());
+            ResultSet resultSet = stmnt.executeQuery();
+            int result = -1;
+            while (resultSet.next()) {
+                result = resultSet.getInt(1);
+            }
+            return result;
+        } catch (SQLException e) {
+            throw e;
+        }
+
+    }
 }

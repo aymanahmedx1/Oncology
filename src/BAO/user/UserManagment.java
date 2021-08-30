@@ -22,11 +22,11 @@ public class UserManagment {
 
     public int addUser(User user) throws SQLException {
         try (Connection con = DBConnection.createConnection();) {
-            String sql = "INSERT INTO users(user,password,dept)VALUES(?,?,?)";
+            String sql = "INSERT INTO users(name,password,dept)VALUES(?,?,?)";
             PreparedStatement stmnt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmnt.setString(1, user.getName());
             stmnt.setString(2, user.getPassword());
-            stmnt.setInt(2, user.getDept());
+            stmnt.setInt(3, user.getDept());
             int queryResult = stmnt.executeUpdate();
             ResultSet resultID;
             int result;
@@ -36,7 +36,7 @@ public class UserManagment {
                 return result;
             }
         } catch (SQLException e) {
-            throw new SQLException("Error Save User");
+            throw e ; 
         }
         throw new SQLException("Error Save User");
     }

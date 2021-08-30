@@ -17,6 +17,18 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="1024.0">
+               <children>
+                  <Button fx:id="sendDoctorBtn1" layoutX="453.0" layoutY="75.0" mnemonicParsing="false" onAction="#print" prefHeight="36.0" prefWidth="132.0" styleClass="buttons" text="Print">
+                     <font>
+                        <Font name="System Bold" size="9.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="253.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox alignment="CENTER_RIGHT" prefHeight="502.0" prefWidth="1012.0" spacing="5.0" HBox.hgrow="ALWAYS">
@@ -272,16 +284,18 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox>
-               <children>
-                  <JFXTextArea fx:id="txtDeathNote" focusColor="RED" labelFloat="true" promptText="Death Note" unFocusColor="#6600ff" wrapText="true" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font></JFXTextArea>
-               </children>
+            <HBox alignment="CENTER_LEFT">
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
+               <children>
+                  <Label text="Death Note ">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="txtDeathNote" prefHeight="200.0" prefWidth="200.0" promptText="Death Note " wrapText="true" HBox.hgrow="ALWAYS" />
+               </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="54.0" prefWidth="1105.0">
                <children>
@@ -317,7 +331,7 @@
             </HBox>
          </children>
          <padding>
-            <Insets top="20.0" />
+            <Insets top="10.0" />
          </padding>
       </VBox>
    </children>

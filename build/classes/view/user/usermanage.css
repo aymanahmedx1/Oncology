@@ -12,7 +12,13 @@
     -fx-font-weight: bold;
 }
 .finished{
-       -fx-background-color:green ;
+    -fx-background-color:green ;
+    -fx-font: 19px sans-serif;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+}
+.find{
+    -fx-background-color:#660066 ;
     -fx-font: 19px sans-serif;
     -fx-text-fill: whitesmoke;
     -fx-font-weight: bold;

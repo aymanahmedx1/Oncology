@@ -348,6 +348,21 @@ public class ViewTestDetailsController implements Initializable {
     }
 
     private void printGroupResult(Tab selected) {
+        boolean res = false;
+        ArrayList<LabVisit> temp = new ArrayList<>();
+        for (LabVisit order : orderDetails) {
+            if (order.getGroupId() == Integer.parseInt(selected.getId())) {
+                temp.add(order);
+            }
+        }
+        for (LabVisit labVisit : temp) {
+            if (labVisit.getResult() != null) {
+                if (!labVisit.getResult().equals("")) {
+                    res = true;
+                    break;
+                }
+            }
+        }
         Thread t = new Thread(() -> {
             RunReport runReport = new RunReport();
             HashMap<String, Object> params = new HashMap<>();
@@ -365,8 +380,10 @@ public class ViewTestDetailsController implements Initializable {
             params.put("reg_par", currentPat.getRegion().getName());
             runReport.showReport(RunReport.LAB_CATEGORY_RESULT, params);
         });
-        t.setDaemon(true);
-        t.start();
+        if (res) {
+            t.setDaemon(true);
+            t.start();
+        }
     }
 
     private boolean checkallResultAdd(Tab selected) {

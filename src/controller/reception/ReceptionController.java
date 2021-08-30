@@ -69,7 +69,7 @@ import net.sf.jasperreports.engine.JREmptyDataSource;
  * @author Ayman
  */
 public class ReceptionController implements Initializable {
-
+    
     private final Educationstate EDU_STATE = new Educationstate();
     private final Relationstate REL_STATe = new Relationstate();
     private final JobState JOB_State = new JobState();
@@ -169,7 +169,7 @@ public class ReceptionController implements Initializable {
             }
         });
     }
-
+    
     @FXML
     private void savePat(ActionEvent event) {
         if (currentPatient != null || flage) {
@@ -203,9 +203,9 @@ public class ReceptionController implements Initializable {
                     break;
             }
         }
-
+        
     }
-
+    
     @FXML
     private void editPat(ActionEvent event) {
         if (currentPatient == null) {
@@ -273,7 +273,7 @@ public class ReceptionController implements Initializable {
                             break;
                     }
                 }
-
+                
             } catch (NumberFormatException ex) {
                 setMessage("Please Check " + ex.getMessage());
             } catch (SQLException ex) {
@@ -281,9 +281,9 @@ public class ReceptionController implements Initializable {
             }
         }
         setFlag();
-
+        
     }
-
+    
     @FXML
     private void clear(ActionEvent event) {
         region = null;
@@ -313,7 +313,7 @@ public class ReceptionController implements Initializable {
         txtMotherName.clear();
         txtHeight.clear();
     }
-
+    
     @FXML
     private void printBarcode(ActionEvent event) {
         if (currentPatient != null) {
@@ -324,10 +324,14 @@ public class ReceptionController implements Initializable {
             RunReport.runReport(report);
         }
     }
-
+    
     @FXML
     private void sendDoctor(ActionEvent event) {
         if (currentPatient != null) {
+            if (currentPatient.getBlackList() == Patient.DEATH) {
+                setMessage("this patient is dead ! ");
+                return;
+            }
             if (flage) {
             } else {
                 try {
@@ -350,14 +354,14 @@ public class ReceptionController implements Initializable {
                 } catch (SQLException ex) {
                     Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                
             }
         } else {
-
+            
             showPop("Patient Is Missing", "Please save data first", "Save first");
         }
     }
-
+    
     @FXML
     private void handelKeyShortcut(KeyEvent event) {
         ActionEvent ae = new ActionEvent(event.getSource(), event.getTarget());
@@ -375,7 +379,7 @@ public class ReceptionController implements Initializable {
                 break;
         }
     }
-
+    
     private void getData() {
         try {
             allRegion = REGION.allRegion();
@@ -386,13 +390,13 @@ public class ReceptionController implements Initializable {
             for (User user : allDoctor) {
                 doctorMap.put(user.getName(), user.getId());
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
-
+    
     private void regionAuto() {
         if (regionTxt.getText().equals("")) {
             if (pop.isShowing()) {
@@ -417,13 +421,13 @@ public class ReceptionController implements Initializable {
                 });
                 pop.getItems().add(m);
             }
-
+            
         }
         regionTxt.setContextMenu(pop);
-
+        
         pop.show(regionTxt, Side.BOTTOM, 0, 0);
     }
-
+    
     private void doctorAuto() {
         if (doctorTxt.getText().equals("")) {
             if (pop.isShowing()) {
@@ -440,24 +444,24 @@ public class ReceptionController implements Initializable {
                 m.setStyle("-fx-pref-width:" + doctorTxt.getWidth() + ";");
                 m.setOnAction((event) -> {
                     pop.hide();
-
+                    
                     doctorTxt.setText(m.getText());
                     doctor = new User();
                     doctor.setId(doctorMap.get(m.getText()));
                     doctor.setName(m.getText());
                     doctorTxt.setText(m.getText());
                     txtIcd.requestFocus();
-
+                    
                 });
                 pop.getItems().add(m);
             }
-
+            
         }
         doctorTxt.setContextMenu(pop);
-
+        
         pop.show(doctorTxt, Side.BOTTOM, 0, 0);
     }
-
+    
     private void nameAuto() {
         if (nameTxt.getText().equals("")) {
             if (pop.isShowing()) {
@@ -477,13 +481,13 @@ public class ReceptionController implements Initializable {
                 setPatToUi();
             });
             pop.getItems().add(m);
-
+            
         }
         nameTxt.setContextMenu(pop);
-
+        
         pop.show(nameTxt, Side.BOTTOM, 0, 0);
     }
-
+    
     private void idAuto() {
         if (idTxt.getText().equals("")) {
             if (pop.isShowing()) {
@@ -503,18 +507,18 @@ public class ReceptionController implements Initializable {
                 setPatToUi();
             });
             pop.getItems().add(m);
-
+            
         }
         idTxt.setContextMenu(pop);
-
+        
         pop.show(idTxt, Side.BOTTOM, 0, 0);
     }
-
+    
     private void autotAll() {
         idTxt.focusedProperty().addListener((ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) -> {
             idAuto();
         });
-
+        
         pop.getStyleClass().add("menu");
         regionTxt.textProperty().addListener((observable, oldValue, newValue) -> {
             regionAuto();
@@ -543,7 +547,7 @@ public class ReceptionController implements Initializable {
             }
         });
     }
-
+    
     private void getPatient() {
         try {
             allPatient = PAT_MANAGE.findPatients(nameTxt.getText());
@@ -551,15 +555,15 @@ public class ReceptionController implements Initializable {
             Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void getPatientByFileID() {
         try {
-            allPatient = PAT_MANAGE.findPatID(idTxt.getText());
+            allPatient = PAT_MANAGE.findPatFileId(idTxt.getText());
         } catch (SQLException ex) {
             Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private String checkData() {
         if (nameTxt.getText().equals("")) {
             return "Name is required";
@@ -583,29 +587,29 @@ public class ReceptionController implements Initializable {
             return "";
         }
     }
-
+    
     public Stage getStage() {
         return stage;
     }
-
+    
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-
+    
     private Patient checkDuplicate(Patient pat) {
         try {
             return PAT_MANAGE.checkPatDuplicate(pat);
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
-
+    
     private void checkOldNew() {
-
+        
     }
-
+    
     private void saveNew() {
         try {
             Patient pat = new Patient();
@@ -661,10 +665,10 @@ public class ReceptionController implements Initializable {
             Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void saveOld() {
     }
-
+    
     private void setPatToUi() {
         try {
             currenAddress = ADDRESS_MANAGE.getPatadress(currentPatient);
@@ -693,30 +697,31 @@ public class ReceptionController implements Initializable {
             if (currentPatient.getBlackList() == Patient.DEATH) {
                 DeathInfo df = new PatientState().getDeathNote(currentPatient);
                 sendDoctorBtn.setDisable(true);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "this patient Marked as Dead\n"
-                        + "in Date : " + df.getDate(), ButtonType.OK);
+                editBtn.setDisable(true);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "this patient is dead ! \n in Date : " + df.getDate(), ButtonType.OK);
                 alert.setTitle("Dead Patient");
                 alert.show();
             } else {
                 sendDoctorBtn.setDisable(false);
+                editBtn.setDisable(false);
             }
             onOffFileds(false);
         } catch (SQLException ex) {
             Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void showPop(String head, String content, String header) {
         Alert alert = new Alert(Alert.AlertType.WARNING, head, ButtonType.OK);
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.show();
     }
-
+    
     private void setDateConverter() {
         birthTxt.setConverter(new StringConverter<LocalDate>() {
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d-M-yyyy");
-
+            
             @Override
             public String toString(LocalDate object) {
                 if (object != null) {
@@ -725,7 +730,7 @@ public class ReceptionController implements Initializable {
                     return "";
                 }
             }
-
+            
             @Override
             public LocalDate fromString(String string) {
                 if (string != null && !string.isEmpty()) {
@@ -734,11 +739,11 @@ public class ReceptionController implements Initializable {
                     return null;
                 }
             }
-
+            
         });
         entryTxt.setConverter(new StringConverter<LocalDate>() {
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d-M-yyyy");
-
+            
             @Override
             public String toString(LocalDate object) {
                 if (object != null) {
@@ -747,7 +752,7 @@ public class ReceptionController implements Initializable {
                     return "";
                 }
             }
-
+            
             @Override
             public LocalDate fromString(String string) {
                 if (string != null && !string.isEmpty()) {
@@ -756,7 +761,7 @@ public class ReceptionController implements Initializable {
                     return null;
                 }
             }
-
+            
         });
         birthTxt.setOnAction((event) -> {
             int result = birthTxt.getValue().compareTo(LocalDate.now());
@@ -769,7 +774,7 @@ public class ReceptionController implements Initializable {
             }
         });
     }
-
+    
     private void setFlag() {
         if (flage) {
             flage = false;
@@ -781,10 +786,10 @@ public class ReceptionController implements Initializable {
             editBtn.setText(" Update ");
             onOffFileds(true);
             sendDoctorBtn.setDisable(true);
-
+            
         }
     }
-
+    
     private boolean checkIfPatHaveVisit() {
         try {
             return MOVEMENT.checkIfPatHaveVisit(currentPatient);
@@ -793,17 +798,17 @@ public class ReceptionController implements Initializable {
         }
         return false;
     }
-
+    
     private void setMessage(String text) {
         messageLabel.setText(text);
-
+        
         PauseTransition delay = new PauseTransition(Duration.seconds(5));
         delay.setOnFinished(ev -> {
             messageLabel.setText("");
         });
         delay.play();
     }
-
+    
     private void onOffFileds(boolean on) {
         barcodeTxt.setEditable(on);
         nameTxt.setEditable(on);
@@ -821,7 +826,7 @@ public class ReceptionController implements Initializable {
         txtMotherName.setEditable(on);
         txtHeight.setEditable(on);
     }
-
+    
     private void setGenderCombo() {
         genderMap.put("Male", Patient.MALE);
         genderMap.put("Female", Patient.FEMALE);
@@ -832,9 +837,9 @@ public class ReceptionController implements Initializable {
         ComboEducation.setItems(FXCollections.observableArrayList(EDU_STATE.getallState()));
         ComboJob.setItems(FXCollections.observableArrayList(JOB_State.getallState()));
         ComboRelasionShip.setItems(FXCollections.observableArrayList(REL_STATe.getallState()));
-
+        
     }
-
+    
     @FXML
     private void printInfo(ActionEvent event) {
         if (currentPatient != null) {
@@ -850,5 +855,5 @@ public class ReceptionController implements Initializable {
             t.start();
         }
     }
-
+    
 }

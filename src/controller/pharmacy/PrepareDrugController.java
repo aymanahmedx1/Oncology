@@ -5,6 +5,7 @@
  */
 package controller.pharmacy;
 
+import BAO.VisitManagement;
 import DAO.Drug;
 import DAO.LabOrder;
 import DAO.LabVisit;
@@ -84,7 +85,6 @@ public class PrepareDrugController implements Initializable {
     private ObservableList<VisitData> filterdVisitDetalis = FXCollections.observableArrayList();
     private ObservableList<LabVisit> labDetalis = FXCollections.observableArrayList();
     private HashMap<String, Integer> getCategory = new HashMap<>();
-
     private Prescription currentPrescription;
     private Timeline timeline;
     private DateTimeFormatter df;

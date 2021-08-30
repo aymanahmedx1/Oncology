@@ -58,6 +58,7 @@ public class RunReport {
     public static final String PATIENT_COST_FLUID = "/report/PatientCostFulid.jrxml";
     public static final String LAB_CATEGORY_RESULT = "/report/LabCategoryResult.jrxml";
     public static final String PATIENT_INFORMATION = "/report/InformationPatient.jrxml";
+    public static final String DEATH_NOTE = "/report/DeathPatient.jrxml";
 
     public static void runReport(ReportData report) {
         try {

@@ -151,7 +151,7 @@ public class LabFinishedController implements Initializable {
             LocalDate from = fromDate.getValue();
             LocalDate to = toDate.getValue();
             String selected = comboLabGroup.getSelectionModel().getSelectedItem();
-            String catSelected = (selected.equals(SELECT) ? "All " : selected);
+            String catSelected = (selected.equals(SELECT) ? " All Tests " : selected);
             int catSelectedId = (group == null) ? 0 : group.getId();
             if (table.getSelectionModel().isEmpty() && table.getItems().size() > 0) {
                 ex.LabReportToExcel(stage, new ArrayList<>(table.getItems()), from, to, catSelected, catSelectedId);

@@ -266,9 +266,53 @@ public class PatientManage {
         }
     }
 
-    public ArrayList<Patient> findPatID(String keyWord) throws SQLException {
+    public ArrayList<Patient> findPatFileId(String keyWord) throws SQLException {
         try {
             String sql = DbStatments.FIND_PAT_BY_PAT_ID;
+            PreparedStatement stmnt = con.prepareStatement(sql);
+            stmnt.setString(1, keyWord + "%");
+            ResultSet rs = stmnt.executeQuery();
+            ArrayList<Patient> allPatient = new ArrayList<>();
+            while (rs.next()) {
+                Patient pat = new Patient();
+                pat.setId(rs.getInt(1));
+                pat.setPatId(rs.getString(2));
+                pat.setName(rs.getString(3));
+                pat.setPhone(rs.getString(4));
+                pat.setBirth(rs.getDate(5));
+                Region rg = new Region();
+                rg.setId(rs.getInt(6));
+                rg.setName(rs.getString(7));
+                pat.setRegion(rg);
+                pat.setEntry(rs.getDate(8));
+                User doctor = new User();
+                doctor.setId(rs.getInt(9));
+                doctor.setName(rs.getString(10));
+                pat.setDoctor(doctor);
+                Diagnosis diagnosis = new Diagnosis();
+                diagnosis.setId(rs.getInt(11));
+                diagnosis.setName(rs.getString(12));
+                pat.setDiagnosis(diagnosis);
+                pat.setBlackList(rs.getInt(13));
+                pat.setIcd10(rs.getString(14));
+                pat.setSurface(rs.getFloat(15));
+                pat.setWeight(rs.getFloat(16));
+                pat.setGender(rs.getInt(17));
+                pat.setJob(rs.getInt(18));
+                pat.setRelation(rs.getInt(19));
+                pat.setEducation(rs.getInt(20));
+                pat.setAddress(rs.getInt(21));
+                allPatient.add(pat);
+            }
+            return allPatient;
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    public ArrayList<Patient> findPatID(String keyWord) throws SQLException {
+        try {
+            String sql = DbStatments.FIND_PAT_BY_BARCODE;
             PreparedStatement stmnt = con.prepareStatement(sql);
             stmnt.setString(1, keyWord + "%");
             ResultSet rs = stmnt.executeQuery();

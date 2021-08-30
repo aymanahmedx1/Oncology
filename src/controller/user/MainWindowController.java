@@ -315,31 +315,6 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    private void manageDelete(MouseEvent event) {
-        if (event.getClickCount() == 3) {
-            try {
-                Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Parent root;
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/ClearProgramData.fxml"));
-                root = loader.load();
-                ClearProgramDataController manage = loader.getController();
-                manage.setStage(currentStage);
-                manage.setCurrent(currentUser);
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setResizable(false);
-                stage.setTitle("Clear Program Data ");
-                stage.setScene(scene);
-                stage.initOwner(currentStage);
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.showAndWait();
-            } catch (IOException ex) {
-                Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-
-    @FXML
     private void drugDose(ActionEvent event) {
         try {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -611,6 +586,50 @@ public class MainWindowController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setTitle(" Black List");
+            stage.setScene(scene);
+            stage.initOwner(currentStage);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.showAndWait();
+        } catch (IOException ex) {
+            Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void UserManagement(ActionEvent event) {
+           try {
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/UserManage.fxml"));
+            root = loader.load();
+            UserManageController manage = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setTitle("User ManageMent ");
+            stage.setScene(scene);
+            stage.initOwner(currentStage);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.showAndWait();
+        } catch (IOException ex) {
+            Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void manageDelete(ActionEvent event) {
+        try {
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/ClearProgramData.fxml"));
+            root = loader.load();
+            ClearProgramDataController manage = loader.getController();
+            manage.setStage(currentStage);
+            manage.setCurrent(currentUser);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setTitle("Clear Program Data ");
             stage.setScene(scene);
             stage.initOwner(currentStage);
             stage.initModality(Modality.WINDOW_MODAL);

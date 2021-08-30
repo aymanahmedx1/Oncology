@@ -32,6 +32,15 @@ public class VisitData {
     private int check;
     private int category;
     private boolean  color ;
+    private int black ; 
+
+    public int getBlack() {
+        return black;
+    }
+
+    public void setBlack(int black) {
+        this.black = black;
+    }
     public int getId() {
         return id;
     }

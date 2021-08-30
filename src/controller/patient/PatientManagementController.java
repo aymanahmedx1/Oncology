@@ -341,7 +341,7 @@ public class PatientManagementController implements Initializable {
 
     private void getPatientById() {
         try {
-            allPatient = PAT_MANAGE.findPatID(idTxt.getText());
+            allPatient = PAT_MANAGE.findPatFileId(idTxt.getText());
         } catch (SQLException ex) {
             Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
         }

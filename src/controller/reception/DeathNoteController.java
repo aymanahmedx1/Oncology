@@ -15,9 +15,9 @@ import commons.Educationstate;
 import static commons.Helpers.PAT_MANAGE;
 import commons.JobState;
 import commons.Relationstate;
+import commons.RunReport;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
@@ -39,6 +39,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -110,10 +111,12 @@ public class DeathNoteController implements Initializable {
     @FXML
     private TextField txtEducation;
     @FXML
-    private JFXTextArea txtDeathNote;
+    private TextArea txtDeathNote;
     private Patient currentPatient;
     private Address currenAddress;
     private final AddressManage ADDRESS_MANAGE = new AddressManage();
+    @FXML
+    private Button sendDoctorBtn1;
 
     /**
      * Initializes the controller class.
@@ -122,6 +125,7 @@ public class DeathNoteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Platform.runLater(() -> {
             AutoAll();
+            barcodeTxt.requestFocus();
         });
     }
 
@@ -276,7 +280,7 @@ public class DeathNoteController implements Initializable {
 
     private void getPatientByFileID() {
         try {
-            allPatient = PAT_MANAGE.findPatID(idTxt.getText());
+            allPatient = PAT_MANAGE.findPatFileId(idTxt.getText());
         } catch (SQLException ex) {
         }
     }
@@ -333,4 +337,19 @@ public class DeathNoteController implements Initializable {
         });
         delay.play();
     }
+    @FXML
+    private void print(ActionEvent event){
+      if (currentPatient != null) {
+            Thread t = new Thread(() -> {
+                RunReport runReport = new RunReport();
+                HashMap<String, Object> params = new HashMap<>();
+                params.put("pat_id", currentPatient.getId());
+                params.put("job", JOB_State.getRelationName(currentPatient.getJob()));
+                params.put("education", EDU_STATE.getRelationName(currentPatient.getEducation()));
+                params.put("relation", REL_STATe.getRelationName(currentPatient.getRelation()));
+                params.put("notes", txtDeathNote.getText());
+                runReport.showReport(RunReport.DEATH_NOTE, params);
+            });
+            t.start();
+        }}
 }
