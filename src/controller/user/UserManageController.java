@@ -6,10 +6,12 @@
 package controller.user;
 
 import BAO.DepartmentManage;
+import BAO.user.Authmanage;
 import BAO.user.UserManagment;
 import DAO.Department;
-import DAO.patient.Patient;
+import DAO.user.Permisions;
 import DAO.user.User;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -21,6 +23,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,8 +33,12 @@ import javafx.geometry.Side;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
 /**
@@ -40,8 +49,9 @@ import javafx.util.Duration;
 public class UserManageController implements Initializable {
 
     private ArrayList<Department> allDep;
-    private ArrayList<User> allUser = new ArrayList<>();
+    private ObservableList<User> allUser = FXCollections.observableArrayList();
     private final UserManagment USER_MANAGE = new UserManagment();
+    private final Authmanage AUTH = new Authmanage();
     private ContextMenu pop = new ContextMenu();
     private HashMap<String, User> UserMap = new HashMap<>();
     @FXML
@@ -55,14 +65,68 @@ public class UserManageController implements Initializable {
     @FXML
     private JFXTextField txtCPassword;
     @FXML
-    private ListView<Label> AllPerList;
-    @FXML
-    private ListView<Label> UserPerList;
-    @FXML
     private Button saveBtn;
     private User currentUser;
     @FXML
     private Label messageLable;
+    @FXML
+    private TableView<User> table;
+    @FXML
+    private TableColumn<User, Integer> colNo;
+    @FXML
+    private TableColumn<User, String> colName;
+    @FXML
+    private TableColumn<User, User> colDept;
+    private boolean edit;
+    @FXML
+    private JFXCheckBox chReception;
+    @FXML
+    private JFXCheckBox chBlack;
+    @FXML
+    private JFXCheckBox chDrugDose;
+    @FXML
+    private JFXCheckBox chPatManage;
+    @FXML
+    private JFXCheckBox chPatCost;
+    @FXML
+    private JFXCheckBox chSrearchForPat;
+    @FXML
+    private JFXCheckBox chSearchForDrug;
+    @FXML
+    private JFXCheckBox chDoctorScreen;
+    @FXML
+    private JFXCheckBox chLabScreen;
+    @FXML
+    private JFXCheckBox chPharmacyScreen;
+    @FXML
+    private JFXCheckBox scDooctor;
+    @FXML
+    private JFXCheckBox chDeathNote;
+    @FXML
+    private JFXCheckBox chLab;
+    @FXML
+    private JFXCheckBox chDrugManage;
+    @FXML
+    private JFXCheckBox chDiaManage;
+    @FXML
+    private JFXCheckBox chRegmanage;
+    @FXML
+    private JFXCheckBox chLabTest;
+    @FXML
+    private JFXCheckBox chClinicPH;
+    @FXML
+    private JFXCheckBox chCemoCheck;
+    @FXML
+    private JFXCheckBox chPrepareDrug;
+    @FXML
+    private JFXCheckBox chUserManage;
+    @FXML
+    private JFXCheckBox chPrefrances;
+    @FXML
+    private JFXCheckBox chIsAdmin;
+    @FXML
+    private JFXCheckBox chDeleteData;
+    private Permisions currentAuthData;
 
     /**
      * Initializes the controller class.
@@ -71,7 +135,9 @@ public class UserManageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Platform.runLater(() -> {
             getData();
+            setTableUi();
             setTextAuto();
+            setCompoData();
         });
     }
 
@@ -84,17 +150,19 @@ public class UserManageController implements Initializable {
     }
 
     @FXML
-    private void addPerToList(ActionEvent event) {
-    }
-
-    @FXML
-    private void removePerFromList(ActionEvent event) {
-    }
-
-    @FXML
     private void save(ActionEvent event) {
-        if (CheckDuplicate() && CheckFileds()) {
-            try {
+        try {
+            if (edit && CheckFileds() && currentUser != null) {
+                currentUser.setName(txtUserName.getText());
+                currentUser.setPassword(txtPassword.getText());
+                currentUser.setDept(getDeptId());
+                USER_MANAGE.update(currentUser);
+                setMessage("Updated Success");
+                fillAuthData();
+                edit = false;
+                getData();
+
+            } else if (CheckDuplicate() && CheckFileds()) {
                 User user = new User();
                 user.setName(txtUserName.getText());
                 user.setPassword(txtPassword.getText());
@@ -102,19 +170,23 @@ public class UserManageController implements Initializable {
                 if (user.getDept() != -1) {
                     user.setId(USER_MANAGE.addUser(user));
                     setMessage("Saved Success");
+                    getData();
+                    AUTH.addPermissionForNewUser(user);
+                    fillAuthData();
+                    currentUser = user;
                 }
 
-            } catch (SQLException ex) {
-                Logger.getLogger(UserManageController.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserManageController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void getData() {
         try {
-            allUser = USER_MANAGE.allUser();
+            allUser = FXCollections.observableArrayList(USER_MANAGE.allUser());
+            table.setItems(allUser);
             allDep = new DepartmentManage().getAllDepartMent();
-            setCompoData();
         } catch (SQLException ex) {
             Logger.getLogger(UserManageController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -153,6 +225,13 @@ public class UserManageController implements Initializable {
 
     private void setUserToUi() {
         txtUserName.setText(currentUser.getName());
+
+        for (Department department : allDep) {
+            if (department.getId() == currentUser.getDept()) {
+                comboDepartmet.getSelectionModel().select(department.getName());
+                break;
+            }
+        }
     }
 
     private void setCompoData() {
@@ -209,4 +288,48 @@ public class UserManageController implements Initializable {
         delay.play();
     }
 
+    @FXML
+    private void userEdit(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            edit = true;
+            currentUser = table.getSelectionModel().getSelectedItem();
+            setUserToUi();
+            pop.hide();
+        }
+    }
+
+    private void setTableUi() {
+        colNo.setCellValueFactory(new PropertyValueFactory<>("no"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colDept.setCellValueFactory(
+                param -> new ReadOnlyObjectWrapper<>(param.getValue())
+        );
+        colDept.setCellFactory(param -> new TableCell<User, User>() {
+            @Override
+            protected void updateItem(User item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null) {
+                    setText("");
+                    return;
+                }
+                setText(deptname(item.getDept()));
+
+            }
+
+        });
+        table.setItems(allUser);
+    }
+
+    private String deptname(int id) {
+        for (Department department : allDep) {
+            if (department.getId() == id) {
+                return department.getName();
+            }
+        }
+        return "";
+    }
+
+    private void fillAuthData() {
+
+    }
 }

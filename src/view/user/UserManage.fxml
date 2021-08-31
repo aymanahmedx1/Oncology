@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="844.0" prefWidth="931.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.UserManageController">
+<AnchorPane id="AnchorPane" prefHeight="844.0" prefWidth="1176.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.UserManageController">
     <stylesheets>
         <URL value="@usermanage.css" />
     </stylesheets>
@@ -27,83 +27,237 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="891.0" spacing="20.0" styleClass="mainColor" VBox.vgrow="ALWAYS">
+            <HBox>
                <children>
-                  <JFXTextField fx:id="txtUserName" focusColor="RED" labelFloat="true" prefHeight="50.0" prefWidth="300.0" promptText="User Name" unFocusColor="#4000ff">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </JFXTextField>
-                  <JFXComboBox fx:id="comboDepartmet" focusColor="RED" labelFloat="true" prefHeight="50.0" prefWidth="300.0" promptText="Department" unFocusColor="#0007ff" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="30.0" layoutY="86.0" prefHeight="107.0" prefWidth="891.0" spacing="20.0" styleClass="mainColor">
-               <children>
-                  <JFXTextField fx:id="txtPassword" focusColor="RED" labelFloat="true" prefHeight="50.0" prefWidth="300.0" promptText="Password" unFocusColor="#4000ff">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </JFXTextField>
-                  <JFXTextField fx:id="txtCPassword" focusColor="RED" labelFloat="true" prefHeight="50.0" prefWidth="300.0" promptText="Confirm Password " unFocusColor="#4000ff">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </JFXTextField>
-               </children>
-            </HBox>
-            <HBox VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                  <VBox>
                      <children>
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="198.0" text="All Permissions" textFill="#3700ff" underline="true">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <ListView fx:id="AllPerList" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="743.0" spacing="20.0" styleClass="mainColor" VBox.vgrow="NEVER">
+                           <children>
+                              <JFXTextField fx:id="txtUserName" focusColor="RED" labelFloat="true" prefHeight="50.0" prefWidth="300.0" promptText="User Name" unFocusColor="#4000ff">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXComboBox fx:id="comboDepartmet" focusColor="RED" labelFloat="true" prefHeight="50.0" prefWidth="300.0" promptText="Department" unFocusColor="#0007ff" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="30.0" layoutY="86.0" prefHeight="70.0" prefWidth="743.0" spacing="20.0" styleClass="mainColor">
+                           <children>
+                              <JFXTextField fx:id="txtPassword" focusColor="RED" labelFloat="true" prefHeight="50.0" prefWidth="300.0" promptText="Password" unFocusColor="#4000ff">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="txtCPassword" focusColor="RED" labelFloat="true" prefHeight="50.0" prefWidth="300.0" promptText="Confirm Password " unFocusColor="#4000ff">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </JFXTextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="74.0" prefHeight="70.0" prefWidth="743.0" spacing="20.0" styleClass="mainColor" />
+                        <VBox>
+                           <children>
+                              <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="83.0" prefWidth="783.0" vgap="20.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <JFXCheckBox fx:id="chReception" prefHeight="32.0" prefWidth="230.0" text="Reception" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chBlack" prefHeight="32.0" prefWidth="230.0" text="Black List" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chDrugDose" prefWidth="230.0" text="Drug Dose" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chPatManage" prefWidth="230.0" text="Patient Manage" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chPatCost" prefWidth="230.0" text="Patient Cost" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chSrearchForPat" prefWidth="230.0" text="Search For Patient" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chSearchForDrug" prefWidth="230.0" text="Serach For Drug" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </FlowPane>
+                              <Separator layoutX="10.0" layoutY="42.0" prefHeight="20.0" prefWidth="200.0" />
+                              <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" hgap="10.0" prefHeight="23.0" prefWidth="783.0" vgap="20.0">
+                                 <children>
+                                    <JFXCheckBox fx:id="chDoctorScreen" prefWidth="230.0" text="Doctor Screen" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chLabScreen" prefWidth="230.0" text="Lab Screen" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chPharmacyScreen" prefWidth="230.0" text="Pharmacy Screen" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </FlowPane>
+                              <Separator prefHeight="20.0" prefWidth="200.0" />
+                              <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" hgap="10.0" prefHeight="12.0" prefWidth="783.0" vgap="20.0">
+                                 <children>
+                                    <JFXCheckBox fx:id="scDooctor" prefWidth="230.0" text="Doctor " textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chDeathNote" prefWidth="230.0" text="Death Note" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chLab" prefWidth="230.0" text="Lab" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </FlowPane>
+                              <Separator layoutX="10.0" layoutY="94.0" prefHeight="20.0" prefWidth="200.0" />
+                              <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" hgap="10.0" prefHeight="37.0" prefWidth="783.0" vgap="20.0">
+                                 <children>
+                                    <JFXCheckBox fx:id="chDrugManage" prefWidth="230.0" text="Drug Manage" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chDiaManage" prefWidth="230.0" text="Diagnosis Manage" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chRegmanage" prefWidth="230.0" text="Region Manage" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chLabTest" prefWidth="230.0" text="Lab Test" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </FlowPane>
+                              <Separator layoutX="10.0" layoutY="210.0" prefHeight="20.0" prefWidth="200.0" />
+                              <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" hgap="10.0" prefHeight="31.0" prefWidth="783.0" vgap="20.0">
+                                 <children>
+                                    <JFXCheckBox fx:id="chClinicPH" prefWidth="230.0" text="Clinical Pharmacy" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chCemoCheck" prefWidth="230.0" text="Chemo Check" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chPrepareDrug" prefWidth="230.0" text="Prepare Drug" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </FlowPane>
+                              <Separator layoutX="10.0" layoutY="294.0" prefHeight="20.0" prefWidth="200.0" />
+                              <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" hgap="10.0" layoutX="10.0" layoutY="314.0" prefHeight="31.0" prefWidth="783.0" vgap="20.0">
+                                 <children>
+                                    <JFXCheckBox fx:id="chUserManage" prefWidth="230.0" text="User Management" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chPrefrances" prefWidth="230.0" text="Prefrances" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chIsAdmin" prefHeight="32.0" prefWidth="230.0" text="Is Admin" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="chDeleteData" prefWidth="230.0" text="Delete Data" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </FlowPane>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="82.0" prefWidth="984.0" spacing="50.0" styleClass="mainColor">
+                           <children>
+                              <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#save" prefHeight="48.0" prefWidth="168.0" styleClass="finished" text="Save">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="30.0" layoutY="777.0" prefHeight="35.0" prefWidth="686.0" spacing="50.0" styleClass="mainColor">
+                           <children>
+                              <Label fx:id="messageLable" prefHeight="25.0" prefWidth="945.0" textFill="RED" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="453.0" prefWidth="124.0" spacing="20.0">
+                  <VBox prefHeight="748.0" prefWidth="635.0">
                      <children>
-                        <JFXButton buttonType="RAISED" onAction="#addPerToList" prefWidth="100.0" ripplerFill="RED" style="-fx-border-color: red;" text="Add" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton buttonType="RAISED" onAction="#removePerFromList" prefWidth="100.0" ripplerFill="RED" style="-fx-border-color: red;" text="Remove" textAlignment="CENTER" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </JFXButton>
+                        <TableView fx:id="table" onMouseClicked="#userEdit" prefHeight="686.0" prefWidth="337.0" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="colNo" prefWidth="48.0" text="No" />
+                            <TableColumn fx:id="colName" prefWidth="163.0" text="User Name" />
+                              <TableColumn fx:id="colDept" prefWidth="133.0" text="Department" />
+                          </columns>
+                        </TableView>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="198.0" text="User Permission" textFill="#3700ff" underline="true">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <ListView fx:id="UserPerList" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="82.0" prefWidth="984.0" spacing="50.0" styleClass="mainColor">
-               <children>
-                  <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#save" prefHeight="48.0" prefWidth="168.0" styleClass="finished" text="Save">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="30.0" layoutY="777.0" prefHeight="82.0" prefWidth="984.0" spacing="50.0" styleClass="mainColor">
-               <children>
-                  <Label fx:id="messageLable" prefHeight="25.0" prefWidth="945.0" textFill="RED" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font></Label>
                </children>
             </HBox>
          </children>

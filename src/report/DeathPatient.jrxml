@@ -4,6 +4,7 @@
 	<property name="ireport.zoom" value="1.652892561983471"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="634"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="onocology"/>
 	<parameter name="pat_id" class="java.lang.String"/>
 	<parameter name="job" class="java.lang.String"/>
 	<parameter name="education" class="java.lang.String"/>
@@ -30,10 +31,10 @@ where pat.id = $P{pat_id} ;]]>
 	<field name="phone" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="dob" class="java.sql.Date"/>
+	<field name="dob" class="java.lang.String"/>
 	<field name="reg_id" class="java.lang.Integer"/>
 	<field name="reg_name" class="java.lang.String"/>
-	<field name="entry" class="java.sql.Date">
+	<field name="entry" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="doc" class="java.lang.Integer"/>
@@ -527,7 +528,7 @@ where pat.id = $P{pat_id} ;]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Diagnosis : ]]></text>
+				<text><![CDATA[اسم الام ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="4" y="360" width="120" height="25" uuid="1e2f4435-d9be-4579-8fc8-9388a5c50f9f"/>

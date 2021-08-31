@@ -12,7 +12,7 @@ package DAO.user;
 public class User {
 
     public static final int DOCTOR = 1;
-
+    private int no;
     private int id;
     private String name;
     private String password;
@@ -59,4 +59,13 @@ public class User {
         this.permision = permision;
     }
 
+    public int getNo() {
+        return no;
+    }
+
+    public void setNo(int no) {
+        this.no = no;
+    }
+
+    
 }

@@ -10,7 +10,6 @@ import BAO.patient.PatientState;
 import DAO.Address;
 import DAO.patient.Patient;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
 import commons.Educationstate;
 import static commons.Helpers.PAT_MANAGE;
 import commons.JobState;
@@ -266,6 +265,7 @@ public class DeathNoteController implements Initializable {
             } else {
                 sendDoctorBtn.setDisable(false);
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(ReceptionController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -316,6 +316,9 @@ public class DeathNoteController implements Initializable {
         txtEducation.clear();
         txtMotherName.clear();
         txtHeight.clear();
+        txtDeathNote.clear();
+        txtGender.clear();
+        
     }
 
     @FXML

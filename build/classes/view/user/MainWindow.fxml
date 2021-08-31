@@ -42,6 +42,11 @@
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
+                              <Button mnemonicParsing="false" onAction="#death" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Death Note" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </FlowPane>
                      </content>
@@ -73,7 +78,7 @@
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#drug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drugs " textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#blackList" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Black List" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
@@ -106,16 +111,11 @@
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#labTests" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Tests" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="22.0" />
-                                 </font>
-                              </Button>
                            </children>
                         </FlowPane>
                      </content>
                   </Tab>
-                  <Tab text="Pharmacy Screens">
+                  <Tab text="Screens">
                      <content>
                         <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
                            <children>
@@ -138,7 +138,7 @@
                         </FlowPane>
                      </content>
                   </Tab>
-                  <Tab text="Patient">
+                  <Tab text="Report">
                      <content>
                         <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
                            <children>
@@ -147,59 +147,7 @@
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                           </children>
-                        </FlowPane>
-                     </content>
-                  </Tab>
-                  <Tab text="Drugs">
-                     <content>
-                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
-                           <children>
                               <Button mnemonicParsing="false" onAction="#searchForDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Drug" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="22.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </FlowPane>
-                     </content>
-                  </Tab>
-                  <Tab text="Diagnosis And region">
-                     <content>
-                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#diagnosisManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Diagnosis Manage" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="22.0" />
-                                 </font>
-                              </Button>
-                              <Button mnemonicParsing="false" onAction="#regionManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Region Manage" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="22.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </FlowPane>
-                     </content>
-                  </Tab>
-                  <Tab text="Black List">
-                     <content>
-                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#blackList" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Black List" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="22.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </FlowPane>
-                     </content>
-                  </Tab>
-                  <Tab text="Death Note">
-                     <content>
-                        <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#death" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Death Note" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
@@ -213,6 +161,26 @@
                         <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
                            <children>
                               <Button mnemonicParsing="false" onAction="#UserManagement" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="User Management" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#drug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drugs " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#labTests" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Tests" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#diagnosisManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Diagnosis Manage" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#regionManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Region Manage" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>

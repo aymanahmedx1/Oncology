@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 /**
  *
@@ -37,18 +39,26 @@ public class DBConnection {
                 url = prop.getProperty("url");
                 username = prop.getProperty("username");
                 password = prop.getProperty("password");
-                return DriverManager.getConnection(serverAdrress, username, password);
+                return DriverManager.getConnection(url, username, password);
             } else {
                 System.out.println("not found");
             }
         } catch (SQLException ex) {
+            sm(ex.getMessage());
             throw new SQLException();
         } catch (FileNotFoundException ex) {
+            sm(ex.getMessage());
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
+            sm(ex.getMessage());
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
+    private static void sm(String m) {
+
+        Alert alert = new Alert(Alert.AlertType.ERROR,"Error is \n"+ m, ButtonType.OK);
+        alert.show();
+    }
 }

@@ -19,20 +19,13 @@ import java.sql.SQLException;
  */
 public class Authmanage {
 
-    public void updateAuth(Permisions auth) throws SQLException {
+    public void addPermissionForNewUser(User user) throws SQLException {
         try (Connection con = DBConnection.createConnection();) {
-            String sql = "UPDATE hospital.auth SET admin=?, patient = ?, manage = ?, users = ?, drugs = ?, reports = ? WHERE (id = ?);";
+            String sql = "INSERT INTO oncology.permision(id) VALUES (?);";
             PreparedStatement stmnt = con.prepareStatement(sql);
-            stmnt.setInt(1, auth.getAdmin());
-            stmnt.setInt(2, auth.getPatient());
-            stmnt.setInt(3, auth.getManage());
-            stmnt.setInt(4, auth.getUsers());
-            stmnt.setInt(5, auth.getDrugs());
-            stmnt.setInt(6, auth.getReports());
-            stmnt.setInt(7, auth.getUserId());
-            int result = stmnt.executeUpdate();
+            stmnt.setInt(1, user.getId());
         } catch (SQLException e) {
-            throw new SQLException("Error Update auth");
+            throw e;
         }
 
     }
@@ -42,19 +35,59 @@ public class Authmanage {
             String sql = "SELECT * FROM auth WHERE id=?";
             PreparedStatement stmnt = con.prepareStatement(sql);
             stmnt.setInt(1, user.getId());
-            ResultSet result = stmnt.executeQuery();
-            Permisions auth = new Permisions();
-            while (result.next()) {
-                auth.setAdmin(result.getInt(2));
-                auth.setPatient(result.getInt(3));
-                auth.setManage(result.getInt(4));
-                auth.setUsers(result.getInt(5));
-                auth.setDrugs(result.getInt(6));
-                auth.setReports(result.getInt(7));
+            ResultSet r = stmnt.executeQuery();
+            Permisions auth = null;
+            int no = 1;
+            while (r.next()) {
+                auth = new Permisions(r.getInt(no++), r.getInt(no++), r.getInt(no++), r.getInt(no++), r.getInt(no++),
+                        r.getInt(no++), r.getInt(no++), r.getInt(no++), r.getInt(no++), r.getInt(no++),
+                        r.getInt(no++), r.getInt(no++), r.getInt(no++), r.getInt(no++), r.getInt(no++),
+                        r.getInt(no++), r.getInt(no++), r.getInt(no++), r.getInt(no++), r.getInt(no++),
+                        r.getInt(no++), r.getInt(no++), r.getInt(no++), r.getInt(no++), r.getInt(no++));
             }
             return auth;
         } catch (SQLException e) {
-            throw new SQLException("Error get Auth");
+            throw e;
+        }
+    }
+
+    public void updateAuth(Permisions per) throws SQLException {
+        try (Connection con = DBConnection.createConnection();) {
+            String sql = "UPDATE oncology.permision SET reception = ?,doctor = ?,death_note = ?,chemo_check = ?,clinical_pharmacy = ?,prepare_drug =?,\n"
+                    + "black_list = ? ,drug_dose = ?,pat_management = ?,pat_cost =?,lab = ?,doc_screen =?,lab_screen = ?,pharmacy_screen = ?,\n"
+                    + "search_for_pat = ?,serach_for_drug = ?,user_manage = ?,drug = ?,lab_test =?,dia_manage =?,region_manage =?,pref_manage =?,\n"
+                    + "DelData = ? ,is_admin=? WHERE id =?;";
+            PreparedStatement stmnt = con.prepareStatement(sql);
+            int no = 1 ; 
+            stmnt.setInt(no++, per.getReception());
+            stmnt.setInt(no++, per.getDoctor());
+            stmnt.setInt(no++, per.getDeath_note());
+            stmnt.setInt(no++, per.getChemo_check());
+            stmnt.setInt(no++, per.getClinical_pharmacy());
+            stmnt.setInt(no++, per.getPrepare_drug());
+            stmnt.setInt(no++, per.getBlack_list());
+            stmnt.setInt(no++, per.getDrug_dose());
+            stmnt.setInt(no++, per.getPat_management());
+            stmnt.setInt(no++, per.getPat_cost());
+            stmnt.setInt(no++, per.getLab());
+            stmnt.setInt(no++, per.getDoc_screen());
+            stmnt.setInt(no++, per.getLab_screen());
+            stmnt.setInt(no++, per.getPharmacy_screen());
+            stmnt.setInt(no++, per.getSearch_for_pat());
+            stmnt.setInt(no++, per.getSerach_for_drug());
+            stmnt.setInt(no++, per.getUser_manage());
+            stmnt.setInt(no++, per.getDrug());
+            stmnt.setInt(no++, per.getLab_test());
+            stmnt.setInt(no++, per.getDia_manage());
+            stmnt.setInt(no++, per.getRegion_manage());
+            stmnt.setInt(no++, per.getPref_manage());
+            stmnt.setInt(no++, per.getDelData());
+            stmnt.setInt(no++, per.getIs_admin());
+            stmnt.setInt(no++, per.getUserId());
+            stmnt.executeUpdate();
+           
+        } catch (SQLException e) {
+            throw e;
         }
     }
 

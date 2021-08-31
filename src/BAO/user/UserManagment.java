@@ -36,23 +36,23 @@ public class UserManagment {
                 return result;
             }
         } catch (SQLException e) {
-            throw e ; 
+            throw e;
         }
         throw new SQLException("Error Save User");
     }
 
     public boolean update(User user) throws SQLException {
         try (Connection con = DBConnection.createConnection();) {
-            String sql = "update users set user=?,password=?,dept=? WHERE id=?";
+            String sql = "update users set name=?,password=?,dept=? WHERE id=?";
             PreparedStatement stmnt = con.prepareStatement(sql);
             stmnt.setString(1, user.getName());
             stmnt.setString(2, user.getPassword());
-            stmnt.setInt(2, user.getDept());
+            stmnt.setInt(3, user.getDept());
             stmnt.setInt(4, user.getId());
             int result = stmnt.executeUpdate();
             return result > 0;
         } catch (SQLException e) {
-            throw new SQLException("Error Update User");
+            throw e ; 
         }
 
     }
@@ -76,12 +76,14 @@ public class UserManagment {
             PreparedStatement stmnt = con.prepareStatement(sql);
             ResultSet result = stmnt.executeQuery();
             ArrayList<User> allUser = new ArrayList<>();
+            int no = 1;
             while (result.next()) {
                 User u = new User();
                 u.setId(result.getInt(1));
                 u.setName(result.getString(2));
                 u.setPassword(result.getString(3));
                 u.setDept(result.getInt(4));
+                u.setNo(no++);
                 allUser.add(u);
             }
             return allUser;
