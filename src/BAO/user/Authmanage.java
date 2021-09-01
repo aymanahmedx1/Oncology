@@ -24,6 +24,7 @@ public class Authmanage {
             String sql = "INSERT INTO oncology.permision(id) VALUES (?);";
             PreparedStatement stmnt = con.prepareStatement(sql);
             stmnt.setInt(1, user.getId());
+            stmnt.executeUpdate();
         } catch (SQLException e) {
             throw e;
         }
@@ -32,7 +33,7 @@ public class Authmanage {
 
     public Permisions getUserAuth(User user) throws SQLException {
         try (Connection con = DBConnection.createConnection();) {
-            String sql = "SELECT * FROM auth WHERE id=?";
+            String sql = "SELECT * FROM permision WHERE id=?";
             PreparedStatement stmnt = con.prepareStatement(sql);
             stmnt.setInt(1, user.getId());
             ResultSet r = stmnt.executeQuery();

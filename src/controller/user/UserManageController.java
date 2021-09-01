@@ -13,6 +13,7 @@ import DAO.user.Permisions;
 import DAO.user.User;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.SQLException;
@@ -59,11 +60,11 @@ public class UserManageController implements Initializable {
     @FXML
     private JFXComboBox<String> comboDepartmet;
     @FXML
-    private JFXTextField txtPassword;
+    private JFXPasswordField txtPassword;
     @FXML
     private JFXTextField txtUserName;
     @FXML
-    private JFXTextField txtCPassword;
+    private JFXPasswordField txtCPassword;
     @FXML
     private Button saveBtn;
     private User currentUser;
@@ -77,7 +78,7 @@ public class UserManageController implements Initializable {
     private TableColumn<User, String> colName;
     @FXML
     private TableColumn<User, User> colDept;
-    private boolean edit;
+    private boolean edit = false;
     @FXML
     private JFXCheckBox chReception;
     @FXML
@@ -143,35 +144,35 @@ public class UserManageController implements Initializable {
 
     @FXML
     private void clear(ActionEvent event) {
-        txtPassword.clear();
-        txtCPassword.clear();
-        txtUserName.clear();
-        currentUser = null;
+        clear();
     }
 
     @FXML
     private void save(ActionEvent event) {
         try {
-            if (edit && CheckFileds() && currentUser != null) {
-                currentUser.setName(txtUserName.getText());
-                currentUser.setPassword(txtPassword.getText());
-                currentUser.setDept(getDeptId());
-                USER_MANAGE.update(currentUser);
-                setMessage("Updated Success");
-                fillAuthData();
-                edit = false;
-                getData();
+            if (edit && currentUser != null) {
+                if (CheckFileds()) {
+                    currentUser.setName(txtUserName.getText());
+                    currentUser.setPassword(txtPassword.getText());
+                    currentUser.setDept(getDeptId());
+                    USER_MANAGE.update(currentUser);
+                    fillAuthData();
+                    setMessage("Updated Success");
+                    getData();
+                }
 
-            } else if (CheckDuplicate() && CheckFileds()) {
+            } else if (CheckDuplicate() && CheckFileds() && !edit) {
                 User user = new User();
                 user.setName(txtUserName.getText());
                 user.setPassword(txtPassword.getText());
                 user.setDept(getDeptId());
                 if (user.getDept() != -1) {
                     user.setId(USER_MANAGE.addUser(user));
+                    currentUser = user;
                     setMessage("Saved Success");
                     getData();
-                    AUTH.addPermissionForNewUser(user);
+                    AUTH.addPermissionForNewUser(currentUser);
+                    currentAuthData = AUTH.getUserAuth(currentUser);
                     fillAuthData();
                     currentUser = user;
                 }
@@ -225,7 +226,9 @@ public class UserManageController implements Initializable {
 
     private void setUserToUi() {
         txtUserName.setText(currentUser.getName());
-
+        txtPassword.setText(currentUser.getPassword());
+        txtCPassword.setText(currentUser.getPassword());
+        setAuthDataUi();
         for (Department department : allDep) {
             if (department.getId() == currentUser.getDept()) {
                 comboDepartmet.getSelectionModel().select(department.getName());
@@ -291,10 +294,16 @@ public class UserManageController implements Initializable {
     @FXML
     private void userEdit(MouseEvent event) {
         if (event.getClickCount() == 2) {
-            edit = true;
-            currentUser = table.getSelectionModel().getSelectedItem();
-            setUserToUi();
-            pop.hide();
+            clear();
+            try {
+                edit = true;
+                currentUser = table.getSelectionModel().getSelectedItem();
+                currentAuthData = AUTH.getUserAuth(currentUser);
+                setUserToUi();
+                pop.hide();
+            } catch (SQLException ex) {
+                Logger.getLogger(UserManageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -330,6 +339,107 @@ public class UserManageController implements Initializable {
     }
 
     private void fillAuthData() {
+        try {
+            currentAuthData.setBlack_list(ch(chBlack));
+            currentAuthData.setChemo_check(ch(chCemoCheck));
+            currentAuthData.setClinical_pharmacy(ch(chClinicPH));
+            currentAuthData.setDeath_note(ch(chDeathNote));
+            currentAuthData.setDelData(ch(chDeleteData));
+            currentAuthData.setDia_manage(ch(chDiaManage));
+            currentAuthData.setDoc_screen(ch(chDoctorScreen));
+            currentAuthData.setDoctor(ch(scDooctor));
+            currentAuthData.setDrug(ch(chDrugManage));
+            currentAuthData.setDrug_dose(ch(chDrugDose));
+            currentAuthData.setIs_admin(ch(chIsAdmin));
+            currentAuthData.setLab(ch(chLab));
+            currentAuthData.setLab_screen(ch(chLabScreen));
+            currentAuthData.setLab_test(ch(chLabTest));
+            currentAuthData.setPat_cost(ch(chPatCost));
+            currentAuthData.setPat_management(ch(chPatManage));
+            currentAuthData.setPharmacy_screen(ch(chPharmacyScreen));
+            currentAuthData.setPref_manage(ch(chPrefrances));
+            currentAuthData.setReception(ch(chReception));
+            currentAuthData.setRegion_manage(ch(chRegmanage));
+            currentAuthData.setSearch_for_pat(ch(chSrearchForPat));
+            currentAuthData.setSerach_for_drug(ch(chSearchForDrug));
+            currentAuthData.setUser_manage(ch(chUserManage));
+            currentAuthData.setPrepare_drug(ch(chPrepareDrug));
+            currentAuthData.setUserId(currentUser.getId());
+            AUTH.updateAuth(currentAuthData);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserManageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+    private int ch(JFXCheckBox ch) {
+        return (ch.isSelected()) ? 1 : 0;
+    }
+
+    private void setAuthDataUi() {
+        if (currentAuthData == null) {
+            return;
+        }
+        chBlack.setSelected(intTobool(currentAuthData.getBlack_list()));
+        chCemoCheck.setSelected(intTobool(currentAuthData.getChemo_check()));
+        chClinicPH.setSelected(intTobool(currentAuthData.getClinical_pharmacy()));
+        chDeathNote.setSelected(intTobool(currentAuthData.getDeath_note()));
+        chDeleteData.setSelected(intTobool(currentAuthData.getDelData()));
+        chDiaManage.setSelected(intTobool(currentAuthData.getDia_manage()));
+        chDoctorScreen.setSelected(intTobool(currentAuthData.getDoc_screen()));
+        scDooctor.setSelected(intTobool(currentAuthData.getDoctor()));
+        chDrugManage.setSelected(intTobool(currentAuthData.getDrug()));
+        chDrugDose.setSelected(intTobool(currentAuthData.getDrug_dose()));
+        chLab.setSelected(intTobool(currentAuthData.getLab()));
+        chLabScreen.setSelected(intTobool(currentAuthData.getLab_screen()));
+        chLabTest.setSelected(intTobool(currentAuthData.getLab_test()));
+        chPatCost.setSelected(intTobool(currentAuthData.getPat_cost()));
+        chPatManage.setSelected(intTobool(currentAuthData.getPat_management()));
+        chPharmacyScreen.setSelected(intTobool(currentAuthData.getPharmacy_screen()));
+        chPrefrances.setSelected(intTobool(currentAuthData.getPref_manage()));
+        chReception.setSelected(intTobool(currentAuthData.getReception()));
+        chRegmanage.setSelected(intTobool(currentAuthData.getRegion_manage()));
+        chSrearchForPat.setSelected(intTobool(currentAuthData.getSearch_for_pat()));
+        chSearchForDrug.setSelected(intTobool(currentAuthData.getSerach_for_drug()));
+        chUserManage.setSelected(intTobool(currentAuthData.getUser_manage()));
+        chPrepareDrug.setSelected(intTobool(currentAuthData.getPrepare_drug()));
+        chIsAdmin.setSelected(intTobool(currentAuthData.getIs_admin()));
+
+    }
+
+    private boolean intTobool(int i) {
+        return i == 1;
+    }
+
+    private void clear() {
+        txtPassword.clear();
+        txtCPassword.clear();
+        txtUserName.clear();
+        currentUser = null;
+        edit = false;
+        currentAuthData = null;
+        chBlack.setSelected(false);
+        chCemoCheck.setSelected(false);
+        chClinicPH.setSelected(false);
+        chDeathNote.setSelected(false);
+        chDeleteData.setSelected(false);
+        chDiaManage.setSelected(false);
+        chDoctorScreen.setSelected(false);
+        scDooctor.setSelected(false);
+        chDrugManage.setSelected(false);
+        chDrugDose.setSelected(false);
+        chLab.setSelected(false);
+        chLabScreen.setSelected(false);
+        chLabTest.setSelected(false);
+        chPatCost.setSelected(false);
+        chPatManage.setSelected(false);
+        chPharmacyScreen.setSelected(false);
+        chPrefrances.setSelected(false);
+        chReception.setSelected(false);
+        chRegmanage.setSelected(false);
+        chSrearchForPat.setSelected(false);
+        chSearchForDrug.setSelected(false);
+        chUserManage.setSelected(false);
+        chPrepareDrug.setSelected(false);
+        chIsAdmin.setSelected(false);
     }
 }

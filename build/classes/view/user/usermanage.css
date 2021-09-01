@@ -23,3 +23,7 @@
     -fx-text-fill: whitesmoke;
     -fx-font-weight: bold;
 }
+
+.sep{
+    -fx-background-color: #cccccc;
+}

@@ -32,6 +32,7 @@ import controller.settings.RegionController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,8 +49,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -60,10 +64,9 @@ import javafx.stage.Stage;
  */
 public class MainWindowController implements Initializable {
 
-    private Authmanage am = new Authmanage();
+    private final Authmanage AUTH = new Authmanage();
 
     private User currentUser;
-    private Permisions userPermision;
     @FXML
     private Label userlbl;
     @FXML
@@ -74,6 +77,71 @@ public class MainWindowController implements Initializable {
     private TitledPane patientTab;
     @FXML
     private Button databaseChanges;
+    @FXML
+    private Tab tabReception;
+    @FXML
+    private Button reciption;
+    @FXML
+    private Tab tabDoctor;
+    @FXML
+    private Button doctor;
+    @FXML
+    private Button deathNote;
+    @FXML
+    private Tab tabChemo;
+    @FXML
+    private Button chemoCheck;
+    @FXML
+    private Tab tabPH;
+    @FXML
+    private Button clinicalPH;
+    @FXML
+    private Button prepareDrug;
+    @FXML
+    private Button blackList;
+    @FXML
+    private Button drugDose;
+    @FXML
+    private Button patManage;
+    @FXML
+    private Button patCost;
+    @FXML
+    private Tab tabLab;
+    @FXML
+    private Button lab;
+    @FXML
+    private Tab tabScreen;
+    @FXML
+    private Button doctorScreen;
+    @FXML
+    private Button labScreen;
+    @FXML
+    private Button PHScreen;
+    @FXML
+    private Tab tabReport;
+    @FXML
+    private Button searchForPat;
+    @FXML
+    private Button serachForDrug;
+    @FXML
+    private Tab tabSettint;
+    @FXML
+    private Button userManage;
+    @FXML
+    private Button drugManage;
+    @FXML
+    private Button labTest;
+    @FXML
+    private Button diaManage;
+    @FXML
+    private Button rigManage;
+    @FXML
+    private Button pref;
+    @FXML
+    private Button deleteData;
+    private Permisions per;
+    @FXML
+    private TabPane mainTabPane;
 
     /**
      * Initializes the controller class.
@@ -81,13 +149,7 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Platform.runLater(() -> {
-//            try {
-//                userPermision = am.getUserAuth(currentUser);
-            setUIpermisions(userPermision);
-
-//            } catch (SQLException ex) {
-//                Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+            setUserPermission();
         });
     }
 
@@ -137,18 +199,6 @@ public class MainWindowController implements Initializable {
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
         username.setText(currentUser.getName());
-    }
-
-    private void setUIpermisions(Permisions per) {
-//        if (per.getPatient() == Permisions.DENY) {
-//            addPatient.setDisable(true);
-//        }
-//        if (per.getManage() == Permisions.DENY) {
-//            patientManagement.setDisable(true);
-//        }
-//        if (per.getUsers() == Permisions.DENY) {
-//            userManage.setDisable(true);
-//        }
     }
 
     public void mouseClicked(MouseEvent event) {
@@ -597,7 +647,7 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void UserManagement(ActionEvent event) {
-           try {
+        try {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Parent root;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/UserManage.fxml"));
@@ -639,4 +689,65 @@ public class MainWindowController implements Initializable {
         }
     }
 
+    private void setPermission() {
+        reciption.setVisible(toBool(per.getReception()));
+        doctor.setVisible(toBool(per.getDoctor()));
+        deathNote.setVisible(toBool(per.getDeath_note()));
+        chemoCheck.setVisible(toBool(per.getChemo_check()));
+        clinicalPH.setVisible(toBool(per.getClinical_pharmacy()));
+        prepareDrug.setVisible(toBool(per.getPrepare_drug()));
+        blackList.setVisible(toBool(per.getBlack_list()));
+        drugDose.setVisible(toBool(per.getDrug_dose()));
+        patManage.setVisible(toBool(per.getPat_management()));
+        patCost.setVisible(toBool(per.getPat_cost()));
+        lab.setVisible(toBool(per.getLab()));
+        doctorScreen.setVisible(toBool(per.getDoc_screen()));
+        labScreen.setVisible(toBool(per.getLab_screen()));
+        PHScreen.setVisible(toBool(per.getPharmacy_screen()));
+        searchForPat.setVisible(toBool(per.getSearch_for_pat()));
+        serachForDrug.setVisible(toBool(per.getSerach_for_drug()));
+        userManage.setVisible(toBool(per.getUser_manage()));
+        drugManage.setVisible(toBool(per.getDrug()));
+        labTest.setVisible(toBool(per.getLab_test()));
+        diaManage.setVisible(toBool(per.getDia_manage()));
+        rigManage.setVisible(toBool(per.getRegion_manage()));
+        pref.setVisible(toBool(per.getPref_manage()));
+        deleteData.setVisible(toBool(per.getDelData()));
+
+    }
+
+    private boolean toBool(int i) {
+        return i == 1;
+    }
+
+    private void setUserPermission() {
+        try {
+            per = AUTH.getUserAuth(currentUser);
+            if (per.getIs_admin() != 1) {
+                setPermission();
+            }
+            setTabPane();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setTabPane() {
+        ArrayList<Tab> alltabs = new ArrayList<>(mainTabPane.getTabs());
+        for (Tab tab : alltabs) {
+            FlowPane p = (FlowPane) tab.getContent();
+            ArrayList<Node> no = new ArrayList<>(p.getChildren());
+            ArrayList<Integer> i = new ArrayList<>();
+            for (Node node : no) {
+                if (node.isVisible()) {
+                    i.add(1);
+                } else {
+                    p.getChildren().remove(node);
+                }
+            }
+            if (i.size() <= 0) {
+                mainTabPane.getTabs().remove(tab);
+            }
+        }
+    }
 }

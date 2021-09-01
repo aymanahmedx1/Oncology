@@ -18,13 +18,13 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="mainTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab text="Reception">
+                <Tab fx:id="tabReception" text="Reception">
                      <content>
                         <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#addPatient" prefHeight="60.0" prefWidth="212.0" styleClass="catButtons" text="Reception" textFill="WHITE">
+                              <Button fx:id="reciption" mnemonicParsing="false" onAction="#addPatient" prefHeight="60.0" prefWidth="212.0" styleClass="catButtons" text="Reception" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
@@ -33,16 +33,16 @@
                         </FlowPane>
                      </content>
                 </Tab>
-                <Tab text="Doctor">
+                <Tab fx:id="tabDoctor" text="Doctor">
                      <content>
                         <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#doctor" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Doctor" textFill="WHITE">
+                              <Button fx:id="doctor" mnemonicParsing="false" onAction="#doctor" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Doctor" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#death" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Death Note" textFill="WHITE">
+                              <Button fx:id="deathNote" mnemonicParsing="false" onAction="#death" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Death Note" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
@@ -51,11 +51,11 @@
                         </FlowPane>
                      </content>
                 </Tab>
-                  <Tab text="Checmo ckeck">
+                  <Tab fx:id="tabChemo" text="Checmo ckeck">
                      <content>
                         <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#cemoCheck" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Chemo Check" textFill="WHITE">
+                              <Button fx:id="chemoCheck" mnemonicParsing="false" onAction="#cemoCheck" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Chemo Check" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
@@ -64,36 +64,36 @@
                         </FlowPane>
                      </content>
                   </Tab>
-                  <Tab text="Pharmacy">
+                  <Tab fx:id="tabPH" text="Pharmacy">
                      <content>
                         <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#pharmacy" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Clinical Pharmacy" textFill="WHITE">
+                              <Button fx:id="clinicalPH" mnemonicParsing="false" onAction="#pharmacy" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Clinical Pharmacy" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#prepareDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Prepare Drug" textFill="WHITE">
+                              <Button fx:id="prepareDrug" mnemonicParsing="false" onAction="#prepareDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Prepare Drug" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#blackList" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Black List" textFill="WHITE">
+                              <Button fx:id="blackList" mnemonicParsing="false" onAction="#blackList" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Black List" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#drugDose" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drug Dose" textFill="WHITE">
+                              <Button fx:id="drugDose" mnemonicParsing="false" onAction="#drugDose" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drug Dose" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#ppatManage" prefHeight="60.0" prefWidth="286.0" styleClass="catButtons" text="Patient Management" textFill="WHITE">
+                              <Button fx:id="patManage" mnemonicParsing="false" onAction="#ppatManage" prefHeight="60.0" prefWidth="286.0" styleClass="catButtons" text="Patient Management" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#patCost" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Patient Cost" textFill="WHITE">
+                              <Button fx:id="patCost" mnemonicParsing="false" onAction="#patCost" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Patient Cost" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
@@ -102,11 +102,11 @@
                         </FlowPane>
                      </content>
                   </Tab>
-                  <Tab text="Lab">
+                  <Tab fx:id="tabLab" text="Lab">
                      <content>
                         <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#lab" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="LAB" textFill="WHITE">
+                              <Button fx:id="lab" mnemonicParsing="false" onAction="#lab" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="LAB" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
@@ -115,21 +115,21 @@
                         </FlowPane>
                      </content>
                   </Tab>
-                  <Tab text="Screens">
+                  <Tab fx:id="tabScreen" text="Screens">
                      <content>
                         <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#doctorScreen" prefHeight="60.0" prefWidth="398.0" styleClass="catButtons" text=" Doctor and chemo check screen" textFill="WHITE">
+                              <Button fx:id="doctorScreen" mnemonicParsing="false" onAction="#doctorScreen" prefHeight="60.0" prefWidth="398.0" styleClass="catButtons" text=" Doctor and chemo check screen" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#labScreen" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Screen" textFill="WHITE">
+                              <Button fx:id="labScreen" mnemonicParsing="false" onAction="#labScreen" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Screen" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#drugScreen" prefHeight="60.0" prefWidth="306.0" styleClass="catButtons" text="Pharmacy Screen" textFill="WHITE">
+                              <Button fx:id="PHScreen" mnemonicParsing="false" onAction="#drugScreen" prefHeight="60.0" prefWidth="306.0" styleClass="catButtons" text="Pharmacy Screen" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
@@ -138,16 +138,16 @@
                         </FlowPane>
                      </content>
                   </Tab>
-                  <Tab text="Report">
+                  <Tab fx:id="tabReport" text="Report">
                      <content>
                         <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#searchForPat" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Patient" textFill="WHITE">
+                              <Button fx:id="searchForPat" mnemonicParsing="false" onAction="#searchForPat" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Patient" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#searchForDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Drug" textFill="WHITE">
+                              <Button fx:id="serachForDrug" mnemonicParsing="false" onAction="#searchForDrug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Search For Drug" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
@@ -156,41 +156,41 @@
                         </FlowPane>
                      </content>
                   </Tab>
-                  <Tab text="Settings">
+                  <Tab fx:id="tabSettint" text="Settings">
                      <content>
                         <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#UserManagement" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="User Management" textFill="WHITE">
+                              <Button fx:id="userManage" mnemonicParsing="false" onAction="#UserManagement" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="User Management" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#drug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drugs " textFill="WHITE">
+                              <Button fx:id="drugManage" mnemonicParsing="false" onAction="#drug" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Drugs " textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#labTests" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Tests" textFill="WHITE">
+                              <Button fx:id="labTest" mnemonicParsing="false" onAction="#labTests" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Lab Tests" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#diagnosisManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Diagnosis Manage" textFill="WHITE">
+                              <Button fx:id="diaManage" mnemonicParsing="false" onAction="#diagnosisManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Diagnosis Manage" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#regionManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Region Manage" textFill="WHITE">
+                              <Button fx:id="rigManage" mnemonicParsing="false" onAction="#regionManage" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Region Manage" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#blackList" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Preferences" textFill="WHITE">
+                              <Button fx:id="pref" mnemonicParsing="false" onAction="#blackList" prefHeight="60.0" prefWidth="250.0" styleClass="catButtons" text="Preferences" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#manageDelete" prefHeight="60.0" prefWidth="312.0" text="Delete Program Data" textFill="WHITE">
+                              <Button fx:id="deleteData" mnemonicParsing="false" onAction="#manageDelete" prefHeight="60.0" prefWidth="312.0" text="Delete Program Data" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
